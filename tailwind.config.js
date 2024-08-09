@@ -1,10 +1,9 @@
 /** @type {import("tailwindcss").Config} */
-
 export default {
   corePlugins: {
     preflight: false,
   },
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx,html}'],
   theme: {
     fontFamily: {
       sans: ['Outfit', 'sans-serif'],

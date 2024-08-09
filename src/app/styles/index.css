@@ -6,3 +6,46 @@
 
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --icon-color: currentColor;
+  }
+}
+
+@layer components {
+  /*
+    Our base class for icons inherits the current text color and applies common styles.
+    We're using a specific component class to prevent potential style conflicts and utilize the [data-axis] attribute.
+    */
+  .icon {
+    @apply select-none fill-current inline-block text-inherit box-content;
+  }
+
+  /* Set icon size to 1em based on its aspect ratio, so we can use `font-size` to scale it */
+  .icon[data-axis*='x'] {
+    /* scale horizontally */
+    @apply w-[1em];
+  }
+
+  .icon[data-axis*='y'] {
+    /* scale vertically */
+    @apply h-[1em];
+  }
+}
+
+.nav-link {
+  @apply flex items-center gap-1 p-2 rounded-md transition-colors duration-200 text-gray-700 no-underline hover:bg-gray-100 hover:text-blue-600;
+}
+
+.nav-link.active {
+  @apply bg-gray-100 text-blue-600;
+}
+
+.nav-icon {
+  @apply w-5 h-5 transition-colors duration-200;
+}
+
+.nav-icon.active {
+  @apply text-blue-600;
+}

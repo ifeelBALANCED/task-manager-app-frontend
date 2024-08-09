@@ -1,5 +1,10 @@
-import { Chip } from '@mantine/core'
+import { AppProviders } from './providers'
+import { AppRouter } from './routes'
 
 export const Application = () => {
-  return <Chip>Awesome chip</Chip>
+  return (
+    <AppProviders>
+      <AppRouter />
+    </AppProviders>
+  )
 }

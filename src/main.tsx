@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Application } from '@/app'
-import { AppProviders } from '@/app/providers'
 import './app/styles/index.css'
 
 const container = document.getElementById('root') as HTMLElement
@@ -19,8 +18,6 @@ if (import.meta.env.VITE_NODE_ENV === 'development') {
 
 root.render(
   <StrictMode>
-    <AppProviders>
-      <Application />
-    </AppProviders>
+    <Application />
   </StrictMode>,
 )

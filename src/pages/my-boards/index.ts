@@ -1,0 +1,1 @@
+export { MyBoardsPage } from './page'
