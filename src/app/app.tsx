@@ -1,6 +1,5 @@
-import { Fragment } from 'react'
-import './styles/index.css'
+import { Chip } from '@mantine/core'
 
 export const Application = () => {
-  return <Fragment>Layout Routes</Fragment>
+  return <Chip>Awesome chip</Chip>
 }
