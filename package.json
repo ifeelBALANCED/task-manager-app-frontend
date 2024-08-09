@@ -1,0 +1,107 @@
+{
+  "name": "task-manager-app-frontend",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "In this full-stack challenge, you will develop a straightforward task management application, which will involve implementing essential HTTP methods such as GET, POST, PUT, and DELETE. This project will provide an opportunity to demonstrate proficiency in full-stack development by creating a system that enables users to manage tasks using a range of fundamental HTTP operations.",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ifeelBALANCED/task-manager-app-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ifeelBALANCED/task-manager-app-frontend/issues",
+    "email": "vladislavherasymenko@gmail.com"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "https-preview": "serve dist",
+    "prepare": "husky install",
+    "format:write": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "lint:check": "eslint --max-warnings=0 \"src/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint:fix": "eslint . --fix",
+    "ts:check": "tsc --noEmit",
+    "test:unit": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@farfetched/core": "^0.12.5",
+    "@farfetched/dev-tools": "^0.12.5",
+    "@mantine/core": "^7.12.0",
+    "@mantine/hooks": "^7.12.0",
+    "@withease/factories": "^1.0.5",
+    "effector": "^23.2.2",
+    "effector-react": "^23.2.1",
+    "patronum": "^2.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.0.11",
+    "react-helmet-async": "^2.0.3",
+    "react-hotkeys-hook": "^4.4.1",
+    "react-router-dom": "^6.21.0",
+    "vite-plugin-checker": "^0.7.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "7.22.7",
+    "@babel/preset-react": "7.22.3",
+    "@babel/preset-typescript": "7.21.5",
+    "@feature-sliced/eslint-config": "^0.1.1",
+    "@playwright/test": "^1.40.1",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^20.14.14",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-boundaries": "^4.2.2",
+    "eslint-plugin-effector": "0.11.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "postcss": "^8.4.41",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
+    "prettier": "3.1.1",
+    "tailwindcss": "^3.4.9",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.9",
+    "vite-plugin-pwa": "^0.17.4",
+    "vitest": "^1.1.3"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,json}": [
+      "eslint --max-warnings=0"
+    ]
+  },
+  "author": {
+    "name": "ifeelBALANCED",
+    "email": "vladislavherasymenko@gmail.com"
+  },
+  "keywords": [
+    "react",
+    "pwa",
+    "frontend",
+    "typescript",
+    "vite"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
