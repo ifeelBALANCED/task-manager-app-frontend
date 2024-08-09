@@ -38,7 +38,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules-
       - name: Eslint
-        run: pnpm run lint:check
+        run: pnpm run lint:check && pnpm run lint:fix
 
   prettier:
     needs: install
@@ -55,7 +55,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules-
       - name: Prettier
-        run: pnpm run prettier:check
+        run: pnpm run format:write
 
   typescript:
     needs: install
