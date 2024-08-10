@@ -3,6 +3,7 @@ name: Deploy
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  SHELL: /bin/bash  # Explicitly set the shell type
 
 on:
   push:
@@ -24,7 +25,7 @@ jobs:
           node-version: 20
 
       - name: Install pnpm
-        run: npm i -g pnpm
+        run: npm install -g pnpm
 
       - name: Install deps
         run: pnpm install --frozen-lockfile
@@ -43,6 +44,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+
+    env:
+      SHELL: /bin/bash  # Explicitly set the shell type
 
     steps:
       - name: Checkout repo
