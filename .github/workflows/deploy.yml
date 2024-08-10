@@ -18,11 +18,13 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
       - name: Deploy to Vercel
-        run: yarn run deploy
+        run: pnpm run deploy
 
         env:
-          PREVIEW_URL: ${{ steps.build.outputs.PREVIEW_URL }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
