@@ -1,17 +1,5 @@
-import {
-  Anchor,
-  Button,
-  Container,
-  Flex,
-  Group,
-  Paper,
-  PasswordInput,
-  Stack,
-  Text,
-  TextInput,
-  Title,
-} from '@mantine/core'
-import { Link } from 'react-router-dom'
+import { Container, Flex, Paper, Title } from '@mantine/core'
+import { RegisterForm } from '@/features/auth/register'
 
 export const RegisterPage = () => {
   return (
@@ -28,58 +16,7 @@ export const RegisterPage = () => {
         </Title>
 
         <Paper withBorder shadow="md" p={30} mt={20} radius="md" className="bg-white">
-          <form>
-            <Stack>
-              <TextInput
-                label="Nickname"
-                placeholder="Your nickname"
-                radius="md"
-                className="text-smoke"
-                aria-label="Nickname"
-              />
-              <TextInput
-                required
-                label="Email"
-                placeholder="hello@mantine.dev"
-                radius="md"
-                className="text-smoke"
-                aria-required="true"
-                aria-label="Email"
-              />
-              <PasswordInput
-                required
-                label="Password"
-                placeholder="Your password"
-                radius="md"
-                className="text-smoke"
-                aria-required="true"
-                aria-label="Password"
-              />
-            </Stack>
-
-            <Group justify="space-between" mt="xl">
-              <Text c="dimmed" size="sm" ta="center" mt={5} className="text-steel">
-                Already have an account?{' '}
-                <Anchor
-                  size="sm"
-                  component={Link}
-                  to="/"
-                  className="text-sapphire"
-                  aria-label="Login"
-                >
-                  Login
-                </Anchor>
-              </Text>
-              <Button
-                type="submit"
-                radius="xl"
-                className="bg-sapphire text-white"
-                aria-label="Register"
-              >
-                Register
-              </Button>
-            </Group>
-          </form>
+          <RegisterForm />
         </Paper>
       </Container>
     </Flex>
