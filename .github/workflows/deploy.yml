@@ -54,7 +54,9 @@ jobs:
           node-version: 20
 
       - name: Install pnpm
-        run: npm i -g pnpm
+        run: |
+          npm install -g pnpm
+          pnpm setup
 
       - name: Download artifact
         uses: actions/download-artifact@v2
