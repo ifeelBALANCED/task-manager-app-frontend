@@ -172,7 +172,7 @@ importers:
         specifier: ^5.3.3
         version: 5.5.4
       vite:
-        specifier: ^5.0.9
+        specifier: ^5.4.0
         version: 5.4.0(@types/node@22.2.0)(sugarss@4.0.1(postcss@8.4.41))(terser@5.31.5)
       vite-plugin-pwa:
         specifier: ^0.17.4
