@@ -34,7 +34,6 @@ export default defineConfig({
 
   timeout: 30 * 1000,
 
-  /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
