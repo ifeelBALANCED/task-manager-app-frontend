@@ -52,7 +52,7 @@ jobs:
           path: ./dist
 
       - name: Install Vercel CLI
-        run: pnpm add -g vercel
+        run: npm add -g vercel
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
