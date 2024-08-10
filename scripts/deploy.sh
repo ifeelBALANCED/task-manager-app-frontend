@@ -8,4 +8,4 @@ pnpm install --frozen-lockfile
 pnpm run build
 
 # Deploy to Vercel
-vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
