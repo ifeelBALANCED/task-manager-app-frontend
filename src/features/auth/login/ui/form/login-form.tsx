@@ -49,6 +49,7 @@ export const LoginForm = () => {
         aria-label="Sign in"
         loading={pending}
         disabled={!isValid}
+        loaderProps={{ type: 'dots' }}
       >
         Sign in
       </Button>

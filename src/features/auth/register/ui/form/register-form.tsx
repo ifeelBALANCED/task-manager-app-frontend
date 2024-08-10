@@ -67,6 +67,7 @@ export const RegisterForm = () => {
           aria-label="Register"
           loading={pending}
           disabled={!isValid}
+          loaderProps={{ type: 'dots' }}
         >
           Register
         </Button>
