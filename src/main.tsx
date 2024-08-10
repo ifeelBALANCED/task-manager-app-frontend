@@ -10,11 +10,11 @@ if (!root) {
   throw new Error('Root element not found')
 }
 
-if (import.meta.env.VITE_NODE_ENV === 'development') {
-  const { attachFarfetchedDevTools } = await import('@farfetched/dev-tools')
-
-  attachFarfetchedDevTools()
-}
+// if (process.env.VITE_NODE_ENV === 'development') {
+//   const { attachFarfetchedDevTools } = await import('@farfetched/dev-tools')
+//
+//   attachFarfetchedDevTools()
+// }
 
 root.render(
   <StrictMode>
