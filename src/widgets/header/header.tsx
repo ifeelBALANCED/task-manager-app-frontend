@@ -33,7 +33,7 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
             size="sm"
             aria-label="Toggle navigation"
           />
-          <Icon className="text-[1.5em] text-sapphire" name="sprite/logo" aria-label="Logo" />
+          <Icon className="text-[1.5em] text-yellow-400" name="sprite/logo" aria-label="Logo" />
           <Text size="lg" fw={700} c="dark">
             My Task Board
           </Text>

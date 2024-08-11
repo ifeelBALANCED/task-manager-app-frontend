@@ -49,3 +49,8 @@
 .nav-icon.active {
   @apply text-blue-600;
 }
+
+.mantine-List-itemWrapper,
+.mantine-List-itemLabel {
+  width: 100% !important; /* Ensure the wrapper takes full width */
+}

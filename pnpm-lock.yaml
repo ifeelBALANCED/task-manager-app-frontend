@@ -47,6 +47,9 @@ importers:
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       effector:
         specifier: ^23.2.2
         version: 23.2.2
