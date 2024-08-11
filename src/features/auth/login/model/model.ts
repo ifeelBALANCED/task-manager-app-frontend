@@ -1,5 +1,9 @@
+import { InvalidDataError } from '@farfetched/core'
 import { sample } from 'effector'
+import { spread } from 'patronum'
+import { userApi, userModel } from '@/entities/user'
 import { redirectFx } from '@/shared/lib/router'
+import { serializeErrors } from '@/shared/lib/serialize-errors'
 import { loginQuery } from '../api'
 import { loginForm } from './form'
 
@@ -13,6 +17,26 @@ sample({
 })
 
 sample({
-  clock: loginQuery.$succeeded,
-  target: redirectFx.prepend(() => '/dashboard'),
+  clock: loginQuery.finished.success,
+  target: [loginForm.reset, redirectFx.prepend(() => '/dashboard'), userApi.getMeQuery.start],
+})
+
+sample({
+  clock: loginQuery.finished.success,
+  filter: (tokens) => Boolean(tokens?.result?.access && tokens?.result?.refresh),
+  fn: (tokenPair) => ({
+    token: tokenPair?.result?.access ?? '',
+    credentials: tokenPair?.result,
+  }),
+  target: spread({
+    token: userModel.$token,
+    credentials: userApi.saveCredentialsFx,
+  }),
+})
+
+sample({
+  clock: loginQuery.$error,
+  filter: loginQuery.$failed,
+  fn: (error) => serializeErrors((error as InvalidDataError)?.response),
+  target: loginForm.addErrors,
 })

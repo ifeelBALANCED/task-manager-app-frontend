@@ -43,6 +43,7 @@ export const LoginForm = () => {
         </Anchor>
       </Group>
       <Button
+        type="submit"
         fullWidth
         mt="xl"
         className="bg-sapphire text-white"

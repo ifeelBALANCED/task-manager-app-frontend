@@ -5,8 +5,9 @@ import { getLoginUrl, LoginDTO } from './contracts'
 export const loginQuery = createJsonQuery({
   params: declareParams<LoginFormValues>(),
   request: {
-    method: 'POST',
     url: getLoginUrl(),
+    method: 'POST',
+    body: (formValues) => formValues,
   },
   response: {
     contract: LoginDTO,

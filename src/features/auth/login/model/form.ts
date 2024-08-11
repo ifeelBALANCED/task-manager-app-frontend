@@ -9,8 +9,8 @@ export const loginForm = createForm<LoginFormValues>({
       init: '',
       rules: [
         createRule({
-          schema: yup.string().required('Email is required'),
-          name: 'required',
+          schema: yup.string().email('Invalid email format').required('Email is required'),
+          name: 'email',
         }),
       ],
     },

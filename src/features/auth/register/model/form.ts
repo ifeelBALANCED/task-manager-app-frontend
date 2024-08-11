@@ -9,7 +9,7 @@ export const registerForm = createForm<RegisterFormValues>({
       init: '',
       rules: [
         createRule({
-          schema: yup.string().required('Email is required'),
+          schema: yup.string().email().required('Email is required'),
           name: 'required',
         }),
       ],

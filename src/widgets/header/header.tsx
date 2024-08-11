@@ -1,7 +1,9 @@
 import { AppShell, Avatar, Burger, Flex, Group, Menu, Text } from '@mantine/core'
 import { IconExternalLink } from '@tabler/icons-react'
 import cn from 'classnames'
+import { useUnit } from 'effector-react'
 import { useNavigate } from 'react-router-dom'
+import { userModel } from '@/entities/user'
 import { Icon } from '@/shared/ui/icon'
 
 type HeaderProps = {
@@ -11,14 +13,13 @@ type HeaderProps = {
 
 export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
   const navigate = useNavigate()
+  const { handleLogout, user } = useUnit({
+    handleLogout: userModel.logoutClicked,
+    user: userModel.$user,
+  })
 
   const handleLogoClick = () => {
     navigate('/dashboard')
-  }
-
-  const handleLogout = () => {
-    // Add any necessary logout logic here
-    navigate('/')
   }
 
   return (
@@ -41,12 +42,14 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
           <Menu.Target>
             <Group className="hover:cursor-pointer">
               <Avatar
-                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png"
+                src={user?.profile_picture ?? ''}
+                variant="light"
                 radius="xl"
+                color="indigo"
               />
               <div style={{ flex: 1 }}>
                 <Text size="sm" fw={500}>
-                  Harriette Spoonlicker
+                  {user?.nickname}
                 </Text>
               </div>
             </Group>
