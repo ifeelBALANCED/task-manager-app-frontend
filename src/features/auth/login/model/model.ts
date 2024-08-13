@@ -26,10 +26,12 @@ sample({
   filter: (tokens) => Boolean(tokens?.result?.access && tokens?.result?.refresh),
   fn: (tokenPair) => ({
     token: tokenPair?.result?.access ?? '',
+    refresh: tokenPair?.result?.refresh ?? '',
     credentials: tokenPair?.result,
   }),
   target: spread({
-    token: userModel.$token,
+    token: userModel.$access,
+    refresh: userModel.$refresh,
     credentials: userApi.saveCredentialsFx,
   }),
 })

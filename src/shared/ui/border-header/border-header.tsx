@@ -1,14 +1,14 @@
-import { Title, Text, Flex, Box, Button } from '@mantine/core'
+import { Box, Button, Flex, Text, Title } from '@mantine/core'
 import { Icon } from '../icon'
 
-interface boardInfoProps {
+interface BoardInfoProps {
   name: string
   description?: string
 }
 
 interface boardHeaderProps {
-  boardInfo: boardInfoProps
-  onEdit: () => void
+  boardInfo: BoardInfoProps
+  onEdit: VoidFunction
 }
 
 export const BoardHeader = ({ boardInfo, onEdit }: boardHeaderProps) => {

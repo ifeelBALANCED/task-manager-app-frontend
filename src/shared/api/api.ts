@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios'
 import axiosRetry from 'axios-retry'
-// eslint-disable-next-line boundaries/element-types
+
 import { env } from '@/shared/config'
 
 export const instance = axios.create({
@@ -89,7 +89,7 @@ instance.interceptors.response.use(
         err.response.data
       ) {
         console.warn(err.response.data)
-        localStorage.removeItem('profile')
+        localStorage.clear()
 
         return Promise.reject(err.response.data)
       }

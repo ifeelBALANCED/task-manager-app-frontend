@@ -7,13 +7,13 @@ import type { User } from '../types'
 export const logoutClicked = createEvent()
 
 export const $user = createStore<User | null>(null)
-export const $token = createStore<string>(window.localStorage.getItem('access') || '')
-
+export const $access = createStore<string>('')
+export const $refresh = createStore<string>('')
 export const $isAuthorized = createStore(false)
 
 sample({
-  source: [$user, $token] as const,
-  fn: ([user, token]) => user !== null && !!token,
+  source: [$refresh, $access] as const,
+  fn: ([refresh, token]) => !!refresh && !!token,
   target: $isAuthorized,
 })
 
@@ -36,4 +36,9 @@ sample({
 persist({
   store: $user,
   key: 'user',
+})
+
+persist({
+  store: $isAuthorized,
+  key: 'isAuthorized',
 })

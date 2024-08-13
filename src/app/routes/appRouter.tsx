@@ -1,14 +1,26 @@
-import { useUnit } from 'effector-react/effector-react.mjs'
-import { useLayoutEffect, useState } from 'react'
+import { Container, Loader } from '@mantine/core'
+import { useUnit } from 'effector-react'
+import { JSX, lazy, Suspense, useLayoutEffect, useState } from 'react'
+import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
 import { Navigate, Route, Router, Routes } from 'react-router-dom'
-import { BoardDetailsPage } from '@/pages/board-details'
-import { DashboardPage } from '@/pages/dashboard'
-import { LoginPage } from '@/pages/login'
-import { MyBoardsPage } from '@/pages/my-boards'
-import { RegisterPage } from '@/pages/register'
 import { userModel } from '@/entities/user'
 import { browserHistory, updateHistory } from '@/shared/lib/router'
 import { Layout } from '../layout'
+
+export const namedLazy = <T extends Record<string, any>>(loader: () => Promise<T>, name: keyof T) =>
+  lazy(async () => {
+    const module = await loader()
+    return { default: module[name] }
+  })
+
+const LoginPage = namedLazy(() => import('@/pages/login'), 'LoginPage')
+const RegisterPage = namedLazy(() => import('@/pages/register'), 'RegisterPage')
+const DashboardPage = namedLazy(() => import('@/pages/dashboard'), 'DashboardPage')
+const TaskBoardsPage = namedLazy(() => import('@/pages/task-boards'), 'TaskBoardsPage')
+const TaskBoardDetailsPage = namedLazy(
+  () => import('@/pages/task-board-details'),
+  'TaskBoardDetailsPage',
+)
 
 export const LoggedOutRoutes = () => (
   <Routes>
@@ -24,12 +36,21 @@ export const LoggedInRoutes = () => (
   <Routes>
     <Route element={<Layout />}>
       <Route path="dashboard" element={<DashboardPage />} />
-      <Route path="my-boards" element={<MyBoardsPage />} />
-      <Route path="my-boards/:boardId" element={<BoardDetailsPage />} />
+      <Route path="task-boards" element={<TaskBoardsPage />} />
+      <Route path="task-boards/:boardId" element={<TaskBoardDetailsPage />} />
       <Route path="*" element={<Navigate to={'/dashboard'} />} />
     </Route>
   </Routes>
 )
+
+export function PageFallback({ error }: FallbackProps): JSX.Element {
+  return (
+    <Container>
+      <p>Something went wrong</p>
+      <pre>{error.message}</pre>
+    </Container>
+  )
+}
 
 export const AppRouter = () => {
   const { update, isAuthorized } = useUnit({
@@ -51,7 +72,11 @@ export const AppRouter = () => {
 
   return (
     <Router location={state.location} navigationType={state.action} navigator={browserHistory}>
-      {isAuthorized ? <LoggedInRoutes /> : <LoggedOutRoutes />}
+      <ErrorBoundary FallbackComponent={PageFallback} key={state.location.pathname}>
+        <Suspense fallback={<Loader size={30} />}>
+          {isAuthorized ? <LoggedInRoutes /> : <LoggedOutRoutes />}
+        </Suspense>
+      </ErrorBoundary>
     </Router>
   )
 }

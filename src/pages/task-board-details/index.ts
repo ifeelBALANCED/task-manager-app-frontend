@@ -1,0 +1,1 @@
+export { TaskBoardDetailsPage } from './page'

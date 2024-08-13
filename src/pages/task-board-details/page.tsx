@@ -16,7 +16,7 @@ const boardDetails = {
   description: 'here is my first board for tasks',
 }
 
-export const BoardDetailsPage = () => {
+export const TaskBoardDetailsPage = () => {
   const { boardId } = useParams()
 
   useEffect(() => {
