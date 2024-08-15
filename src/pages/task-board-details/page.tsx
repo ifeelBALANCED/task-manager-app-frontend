@@ -20,6 +20,7 @@ import { CreateNewTaskButton, createNewTaskModel, UpdateTaskModal } from '@/feat
 import { taskApi } from '@/entities/task'
 import { taskBoardsModel, taskBoardsTypes, TaskCard } from '@/entities/task-board'
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
+import './model'
 
 export const TaskBoardDetailsPage = () => {
   const { boardId } = useParams()

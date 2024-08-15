@@ -1,13 +1,13 @@
 import { sample } from 'effector'
+import { createNewTaskApi } from '@/features/task'
 import { taskApi } from '@/entities/task'
 import { taskBoardsApi, taskBoardsModel } from '@/entities/task-board'
-import { createTaskMutation, updateTaskMutation } from '../api'
 
 sample({
   clock: [
     taskApi.deleteTaskMutation.finished.success,
-    updateTaskMutation.finished.success,
-    createTaskMutation.finished.success,
+    createNewTaskApi.updateTaskMutation.finished.success,
+    createNewTaskApi.createTaskMutation.finished.success,
     taskBoardsApi.updateTaskBoardsQuery.finished.success,
   ],
   source: taskBoardsModel.TaskBoardDetailsGate.state,
