@@ -1,2 +1,8 @@
-export { taskBoardsQuery, taskBoardDetailsQuery } from './task-board'
-export { getTaskBoardsUrl, TaskBoard, TaskBoardsDTO, getTaskBoardDetailsUrl } from './contracts'
+export { taskBoardsQuery, taskBoardDetailsQuery, updateTaskBoardsQuery } from './task-board'
+export {
+  getTaskBoardsUrl,
+  TaskBoard,
+  TaskBoardsDTO,
+  getTaskBoardDetailsUrl,
+  CreateTaskBoardDTO,
+} from './contracts'

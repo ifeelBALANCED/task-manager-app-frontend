@@ -1,0 +1,12 @@
+# test/
+node_modules/
+.idea/
+.eslintignore
+.gitignore
+/dist
+.husky/
+.gitlab/
+*.json
+*.log
+README.md
+types/

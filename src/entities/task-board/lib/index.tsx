@@ -1,16 +1,22 @@
-import { IconCheck, IconClock, IconEyePause, IconList, IconX } from '@tabler/icons-react'
+import {
+  IconAlarmSnooze,
+  IconAlertCircle,
+  IconCircleCheck,
+  IconCircleDashed,
+  IconClockPlay,
+} from '@tabler/icons-react'
 
 export const getStatusIcon = (status: string) => {
   switch (status) {
     case 'TODO':
-      return <IconList size={20} color="gray" />
+      return <IconCircleDashed size={20} stroke={1.5} color="#6B7280" />
     case 'IN_PROGRESS':
-      return <IconClock size={20} color="blue" />
+      return <IconClockPlay size={20} stroke={1.5} color="#3B82F6" />
     case 'DONE':
-      return <IconCheck size={20} color="green" />
+      return <IconCircleCheck size={20} stroke={1.5} color="#10B981" />
     case 'POSTPONED':
-      return <IconEyePause size={20} color="orange" />
+      return <IconAlarmSnooze size={20} stroke={1.5} color="#F59E0B" />
     default:
-      return <IconX size={20} color="red" />
+      return <IconAlertCircle size={20} stroke={1.5} color="#DC2626" />
   }
 }

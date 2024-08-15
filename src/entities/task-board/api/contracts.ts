@@ -12,3 +12,8 @@ export const TaskBoard = obj({
 })
 
 export const TaskBoardsDTO = arr(TaskBoard)
+
+export const CreateTaskBoardDTO = obj({
+  name: str,
+  description: str,
+})

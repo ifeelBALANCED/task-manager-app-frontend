@@ -4,7 +4,7 @@ import cn from 'classnames'
 import dayjs from 'dayjs'
 import { useGate, useUnit } from 'effector-react'
 import { Link } from 'react-router-dom'
-import { CreateNewTaskBoardButton } from '@/features/create-new-board'
+import { CreateNewTaskBoardButton } from '@/features/board'
 import { taskBoardsModel } from '@/entities/task-board'
 
 export const TaskBoardsPage = () => {

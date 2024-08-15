@@ -21,3 +21,16 @@ export const taskBoardDetailsQuery = createQuery({
     return response.data
   },
 })
+
+export const updateTaskBoardsQuery = createQuery({
+  handler: async (
+    updateTaskBoardDTO: Pick<TaskBoard, 'name' | 'description' | 'board_uuid'>,
+  ): Promise<TaskBoard> => {
+    const response = await instance.patch<TaskBoard, AxiosResponse<TaskBoard>>(
+      `${getTaskBoardsUrl()}${updateTaskBoardDTO.board_uuid}/`,
+      updateTaskBoardDTO,
+    )
+
+    return response.data
+  },
+})

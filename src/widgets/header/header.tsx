@@ -5,6 +5,7 @@ import { useUnit } from 'effector-react'
 import { useNavigate } from 'react-router-dom'
 import { userModel } from '@/entities/user'
 import { Icon } from '@/shared/ui/icon'
+import { ThemeToggleControl } from '@/shared/ui/theme-toggle-control'
 
 type HeaderProps = {
   navbarExpanded: boolean
@@ -23,7 +24,7 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
   }
 
   return (
-    <AppShell.Header className="border-b border-slate">
+    <AppShell.Header className="border-b border-slate-200 dark:border-slate-600">
       <Group h="100%" px="md" justify="space-between">
         <Flex align="center" gap="md" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
           <Burger
@@ -32,42 +33,48 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
             hiddenFrom="sm"
             size="sm"
             aria-label="Toggle navigation"
+            className="text-slate-700 dark:text-slate-300"
           />
-          <Icon className="text-[1.5em] text-yellow-400" name="sprite/logo" aria-label="Logo" />
-          <Text size="lg" fw={700} c="dark">
+          <Icon
+            className="text-[1.5em] text-yellow-400 dark:text-yellow-300"
+            name="sprite/logo"
+            aria-label="Logo"
+          />
+          <Text size="lg" fw={700} className="text-slate-900 dark:text-slate-200">
             My Task Board
           </Text>
         </Flex>
-        <Menu withArrow>
-          <Menu.Target>
-            <Group className="hover:cursor-pointer">
-              <Avatar
-                src={user?.profile_picture ?? ''}
-                variant="light"
-                radius="xl"
-                color="indigo"
-              />
-              <div style={{ flex: 1 }}>
-                <Text size="sm" fw={500}>
-                  {user?.nickname}
-                </Text>
-              </div>
-            </Group>
-          </Menu.Target>
-          <Menu.Dropdown>
-            <Menu.Item
-              leftSection={<IconExternalLink />}
-              onClick={handleLogout}
-              className={cn(
-                'flex items-center p-3 rounded-md transition-colors duration-300',
-                'text-black hover:bg-sapphire hover:text-white',
-              )}
-              aria-label="Logout"
-            >
-              Logout
-            </Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
+        <Group>
+          <ThemeToggleControl />
+          <Menu withArrow>
+            <Menu.Target>
+              <Group className="hover:cursor-pointer">
+                <Avatar
+                  src={user?.profile_picture ?? ''}
+                  variant="light"
+                  radius="xl"
+                  color="indigo"
+                  className="border border-slate-200 dark:border-slate-600"
+                />
+                <div style={{ flex: 1 }}>
+                  <Text size="sm" fw={500} className="text-slate-900 dark:text-slate-200">
+                    {user?.nickname}
+                  </Text>
+                </div>
+              </Group>
+            </Menu.Target>
+            <Menu.Dropdown>
+              <Menu.Item
+                leftSection={<IconExternalLink />}
+                onClick={handleLogout}
+                className={cn('flex items-center p-3 rounded-md')}
+                aria-label="Logout"
+              >
+                Logout
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+        </Group>
       </Group>
     </AppShell.Header>
   )

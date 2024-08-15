@@ -24,9 +24,9 @@ export const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
             component={Link}
             to={item.path}
             key={item.path}
-            className={cn('text-sm transition-colors duration-300', {
+            className={cn('font-medium text-sm transition-colors duration-300', {
               'text-blue-600 font-bold cursor-default': isActive,
-              'text-gray-600 hover:text-blue-500': !isActive,
+              'text-black hover:text-blue-500': !isActive,
             })}
             underline={isActive ? 'always' : 'hover'}
           >

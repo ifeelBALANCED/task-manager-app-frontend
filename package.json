@@ -34,6 +34,7 @@
     "@farfetched/dev-tools": "^0.12.5",
     "@mantine/core": "^7.12.0",
     "@mantine/hooks": "^7.12.0",
+    "@mantine/spotlight": "^7.12.1",
     "@tabler/icons-react": "^3.12.0",
     "@types/react-router-dom": "^5.3.3",
     "@withease/contracts": "^1.0.0",
