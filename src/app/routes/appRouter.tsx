@@ -1,4 +1,4 @@
-import { Container, Loader } from '@mantine/core'
+import { Center, Container, Loader } from '@mantine/core'
 import { useUnit } from 'effector-react'
 import { JSX, lazy, Suspense, useLayoutEffect, useState } from 'react'
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
@@ -27,7 +27,7 @@ export const LoggedOutRoutes = () => (
     <Route path="/" element={<Layout variant="minimal" />}>
       <Route index element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />
-      <Route path="*" element={<Navigate to={'/'} />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Route>
   </Routes>
 )
@@ -38,7 +38,7 @@ export const LoggedInRoutes = () => (
       <Route path="dashboard" element={<DashboardPage />} />
       <Route path="task-boards" element={<TaskBoardsPage />} />
       <Route path="task-boards/:boardId" element={<TaskBoardDetailsPage />} />
-      <Route path="*" element={<Navigate to={'/dashboard'} />} />
+      <Route path="*" element={<Navigate to="/dashboard" />} />
     </Route>
   </Routes>
 )
@@ -73,7 +73,13 @@ export const AppRouter = () => {
   return (
     <Router location={state.location} navigationType={state.action} navigator={browserHistory}>
       <ErrorBoundary FallbackComponent={PageFallback} key={state.location.pathname}>
-        <Suspense fallback={<Loader size={30} />}>
+        <Suspense
+          fallback={
+            <Center style={{ height: '100vh' }}>
+              <Loader size="lg" variant="dots" />
+            </Center>
+          }
+        >
           {isAuthorized ? <LoggedInRoutes /> : <LoggedOutRoutes />}
         </Suspense>
       </ErrorBoundary>

@@ -1,3 +1,4 @@
+import { keepFresh } from '@farfetched/core'
 import { createEvent, createStore, sample } from 'effector'
 import { createGate } from 'effector-react'
 import { taskBoardDetailsQuery, taskBoardsQuery } from '../api'
@@ -10,6 +11,7 @@ export const taskViewModeToggled = createEvent()
 export const $taskBoards = taskBoardsQuery.$data
 export const $taskBoardDetail = taskBoardDetailsQuery.$data
 export const $taskBoardsPending = taskBoardsQuery.$pending
+export const $taskBoardDetailsPending = taskBoardDetailsQuery.$pending
 export const $taskViewMode = createStore<'grid' | 'column'>('grid')
 
 sample({
@@ -29,4 +31,12 @@ sample({
   filter: (params) => Boolean(params.boardId),
   fn: ({ boardId }) => ({ boardId }),
   target: taskBoardDetailsQuery.start,
+})
+
+keepFresh(taskBoardsQuery, {
+  automatically: true,
+})
+
+keepFresh(taskBoardDetailsQuery, {
+  automatically: true,
 })

@@ -30,7 +30,10 @@ export const LoginForm = () => {
           label="Email"
           placeholder="you@mantine.dev"
           required
-          className="text-smoke"
+          classNames={{
+            label: 'text-sapphire',
+            input: 'text-black',
+          }}
           aria-required="true"
           value={fields.email.value}
           onChange={(e) => fields.email.onChange(e.target.value)}
@@ -41,7 +44,10 @@ export const LoginForm = () => {
           placeholder="Your password"
           required
           mt="md"
-          className="text-smoke"
+          classNames={{
+            label: 'text-sapphire',
+            input: 'text-black',
+          }}
           aria-required="true"
           value={fields.password.value}
           onChange={(e) => fields.password.onChange(e.target.value)}

@@ -33,7 +33,10 @@ export const RegisterForm = () => {
             label="Nickname"
             placeholder="Your nickname"
             radius="md"
-            className="text-smoke"
+            classNames={{
+              label: 'text-sapphire',
+              input: 'text-black',
+            }}
             aria-label="Nickname"
             value={fields.nickname.value}
             onChange={(e) => fields.nickname.onChange(e.target.value)}
@@ -44,7 +47,10 @@ export const RegisterForm = () => {
             label="Email"
             placeholder="hello@mantine.dev"
             radius="md"
-            className="text-smoke"
+            classNames={{
+              label: 'text-sapphire',
+              input: 'text-black',
+            }}
             aria-required="true"
             aria-label="Email"
             value={fields.email.value}
@@ -56,7 +62,10 @@ export const RegisterForm = () => {
             label="Password"
             placeholder="Your password"
             radius="md"
-            className="text-smoke"
+            classNames={{
+              label: 'text-sapphire',
+              input: 'text-black',
+            }}
             aria-required="true"
             aria-label="Password"
             value={fields.password.value}

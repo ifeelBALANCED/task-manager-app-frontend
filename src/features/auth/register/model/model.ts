@@ -1,5 +1,6 @@
 import { InvalidDataError } from '@farfetched/core'
 import { sample } from 'effector'
+import { debug } from 'patronum'
 import { redirectFx } from '@/shared/lib/router'
 import { serializeErrors } from '@/shared/lib/serialize-errors'
 import { registerQuery } from '../api'
@@ -18,6 +19,8 @@ sample({
   clock: registerQuery.finished.success,
   target: [registerForm.reset, redirectFx.prepend(() => '/')],
 })
+
+debug(registerQuery.finished.failure)
 
 sample({
   clock: registerQuery.$error,

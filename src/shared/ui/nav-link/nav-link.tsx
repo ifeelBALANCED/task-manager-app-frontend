@@ -1,17 +1,27 @@
 import cn from 'classnames'
 import { ReactNode } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, matchPath, useLocation } from 'react-router-dom'
 
 type NavLinkProps = {
   to: string
   icon: ReactNode
   children: ReactNode
   'aria-label': string
+  end?: boolean
 }
 
-export const NavLink = ({ to, icon, children, 'aria-label': ariaLabel }: NavLinkProps) => {
+export const NavLink = ({
+  to,
+  icon,
+  children,
+  'aria-label': ariaLabel,
+  end = false,
+}: NavLinkProps) => {
   const location = useLocation()
-  const isActive = location.pathname === to
+
+  const isActive = end
+    ? location.pathname === to
+    : matchPath({ path: to, end: false }, location.pathname) !== null
 
   return (
     <Link

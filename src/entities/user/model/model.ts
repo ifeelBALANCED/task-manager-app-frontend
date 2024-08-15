@@ -1,5 +1,6 @@
 import { createEvent, createStore, sample } from 'effector'
 import { persist } from 'effector-storage/local'
+import { getLocalAccessToken, getLocalRefreshToken } from '@/shared/api'
 import { redirectFx } from '@/shared/lib/router'
 import { clearCredentialsFx, getMeQuery, logoutQuery } from '../api'
 import type { User } from '../types'
@@ -7,8 +8,8 @@ import type { User } from '../types'
 export const logoutClicked = createEvent()
 
 export const $user = createStore<User | null>(null)
-export const $access = createStore<string>('')
-export const $refresh = createStore<string>('')
+export const $access = createStore<string>(getLocalAccessToken() ?? '')
+export const $refresh = createStore<string>(getLocalRefreshToken() ?? '')
 export const $isAuthorized = createStore(false)
 
 sample({
