@@ -20,7 +20,7 @@
     "https-preview": "serve dist",
     "prepare": "husky install",
     "format:write": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "lint:check": "eslint --max-warnings=0 \"src/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint:check": "eslint --max-warnings=0 --no-ignore \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "lint:fix": "eslint . --fix",
     "ts:check": "tsc --noEmit",
     "test:unit": "vitest --passWithNoTests",
@@ -102,7 +102,7 @@
       "prettier --write"
     ],
     "src/**/*.{js,jsx,ts,tsx,json}": [
-      "eslint --max-warnings=0"
+      "eslint --max-warnings=0 --no-ignore"
     ]
   },
   "author": {
