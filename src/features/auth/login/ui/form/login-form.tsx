@@ -11,11 +11,12 @@ import {
 import { useForm } from 'effector-forms'
 import { useUnit } from 'effector-react'
 import { FormEventHandler } from 'react'
+import { Link } from 'react-router-dom'
 import { $loginPending, loginForm } from '../../model'
 
 export const LoginForm = () => {
   const { pending } = useUnit({ pending: $loginPending })
-  const { fields, hasError, errorText, submit, isValid } = useForm(loginForm)
+  const { fields, hasError, errorText, submit, isValid, reset } = useForm(loginForm)
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
@@ -56,8 +57,10 @@ export const LoginForm = () => {
         <Group justify="space-between" mt="lg">
           <Checkbox label="Remember me" className="text-smoke" aria-label="Remember me" />
           <Anchor
-            component="button"
+            component={Link}
             size="sm"
+            onClick={() => reset()}
+            to="/forgot-password"
             className="text-sapphire"
             aria-label="Forgot password"
           >

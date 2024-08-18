@@ -14,6 +14,8 @@ export const namedLazy = <T extends Record<string, any>>(loader: () => Promise<T
   })
 
 const LoginPage = namedLazy(() => import('@/pages/login'), 'LoginPage')
+const ForgotPasswordPage = namedLazy(() => import('@/pages/forgot-password'), 'ForgotPasswordPage')
+const ResetPasswordPage = namedLazy(() => import('@/pages/reset-password'), 'ResetPasswordPage')
 const RegisterPage = namedLazy(() => import('@/pages/register'), 'RegisterPage')
 const DashboardPage = namedLazy(() => import('@/pages/dashboard'), 'DashboardPage')
 const TaskBoardsPage = namedLazy(() => import('@/pages/task-boards'), 'TaskBoardsPage')
@@ -27,6 +29,8 @@ export const LoggedOutRoutes = () => (
     <Route path="/" element={<Layout variant="minimal" />}>
       <Route index element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />
+      <Route path="reset-password" element={<ResetPasswordPage />} />
+      <Route path="forgot-password" element={<ForgotPasswordPage />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Route>
   </Routes>

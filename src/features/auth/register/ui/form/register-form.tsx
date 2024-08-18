@@ -17,7 +17,7 @@ import { $registerPending, registerForm } from '../../model'
 
 export const RegisterForm = () => {
   const { pending } = useUnit({ pending: $registerPending })
-  const { fields, hasError, errorText, submit, isValid } = useForm(registerForm)
+  const { fields, hasError, errorText, submit, isValid, reset } = useForm(registerForm)
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
@@ -77,7 +77,14 @@ export const RegisterForm = () => {
         <Group justify="space-between" mt="xl">
           <Text c="dimmed" size="sm" ta="center" mt={5} className="text-steel">
             Already have an account?{' '}
-            <Anchor size="sm" component={Link} to="/" className="text-sapphire" aria-label="Login">
+            <Anchor
+              size="sm"
+              component={Link}
+              onClick={() => reset()}
+              to="/"
+              className="text-sapphire"
+              aria-label="Login"
+            >
               Login
             </Anchor>
           </Text>

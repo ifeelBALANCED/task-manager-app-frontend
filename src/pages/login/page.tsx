@@ -1,8 +1,11 @@
 import { Anchor, Container, Flex, Paper, Text, Title } from '@mantine/core'
+import { useForm } from 'effector-forms'
 import { Link } from 'react-router-dom'
-import { LoginForm } from '@/features/auth/login'
+import { LoginForm, loginModel } from '@/features/auth/login'
 
 export const LoginPage = () => {
+  const { reset } = useForm(loginModel.loginForm)
+
   return (
     <Flex
       justify="center"
@@ -21,6 +24,7 @@ export const LoginPage = () => {
             size="sm"
             component={Link}
             to="/register"
+            onClick={() => reset()}
             className="text-sapphire"
             aria-label="Create account"
           >
