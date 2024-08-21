@@ -3,7 +3,7 @@ import { createEvent, createStore, sample } from 'effector'
 import { createGate } from 'effector-react'
 import { not } from 'patronum'
 import { redirectFx } from '@/shared/lib/router'
-import { taskBoardDetailsQuery, taskBoardsQuery } from '../api'
+import { deleteBoardDetailsQuery, taskBoardDetailsQuery, taskBoardsQuery } from '../api'
 import { isValidUUID } from '../lib'
 
 export const TaskBoardsGate = createGate<never>()
@@ -47,4 +47,9 @@ keepFresh(taskBoardsQuery, {
 
 keepFresh(taskBoardDetailsQuery, {
   automatically: true,
+})
+
+sample({
+  clock: [TaskBoardsGate.open, deleteBoardDetailsQuery.finished.success],
+  target: taskBoardsQuery.start,
 })
