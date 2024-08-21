@@ -41,7 +41,7 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
             aria-label="Logo"
           />
           <Text size="lg" fw={700} className="text-slate-900 dark:text-slate-200">
-            My Task Board
+            Taskboard
           </Text>
         </Flex>
         <Group>
