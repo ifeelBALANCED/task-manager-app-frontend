@@ -22,6 +22,12 @@ export const taskBoardDetailsQuery = createQuery({
   },
 })
 
+export const deleteBoardDetailsQuery = createQuery({
+  handler: async ({ id }: { id: string }) => {
+    await instance.delete(getTaskBoardDetailsUrl(id))
+  },
+})
+
 export const updateTaskBoardsQuery = createQuery({
   handler: async (
     updateTaskBoardDTO: Pick<TaskBoard, 'name' | 'description' | 'board_uuid'>,

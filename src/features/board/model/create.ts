@@ -1,5 +1,4 @@
 import { sample } from 'effector'
-import { taskBoardsApi } from '@/entities/task-board'
 import { createModalApi } from '@/shared/lib/modal'
 import { createTaskBoardMutation } from '../api'
 import { createTaskBoardForm } from './form'
@@ -21,9 +20,5 @@ sample({
 
 sample({
   clock: createTaskBoardMutation.finished.success,
-  target: [
-    createTaskBoardModalApi.modalClosed,
-    taskBoardsApi.taskBoardsQuery.start,
-    createTaskBoardForm.reset,
-  ],
+  target: [createTaskBoardModalApi.modalClosed, createTaskBoardForm.reset],
 })

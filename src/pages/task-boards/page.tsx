@@ -1,21 +1,31 @@
 import { Badge, Button, Card, Grid, Group, Loader, Text, Tooltip } from '@mantine/core'
-import { IconLayoutGrid, IconLayoutList } from '@tabler/icons-react'
+import { IconCheck, IconLayoutGrid, IconLayoutList, IconTrash, IconX } from '@tabler/icons-react'
 import cn from 'classnames'
 import dayjs from 'dayjs'
 import { useGate, useUnit } from 'effector-react'
-import { Link } from 'react-router-dom'
+import { useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { CreateNewTaskBoardButton } from '@/features/board'
-import { taskBoardsModel } from '@/entities/task-board'
+import { taskBoardsApi, taskBoardsModel } from '@/entities/task-board'
 
 export const TaskBoardsPage = () => {
   useGate(taskBoardsModel.TaskBoardsGate)
+  const navigate = useNavigate()
 
-  const { taskBoards, loading, viewMode, viewModeToggled } = useUnit({
+  const { taskBoards, loading, viewMode, viewModeToggled, deleteTaskBoard } = useUnit({
     taskBoards: taskBoardsModel.$taskBoards,
     loading: taskBoardsModel.$taskBoardsPending,
     viewMode: taskBoardsModel.$taskViewMode,
     viewModeToggled: taskBoardsModel.taskViewModeToggled,
+    deleteTaskBoard: taskBoardsApi.deleteBoardDetailsQuery.start,
   })
+
+  const onTaskBoardDelete = useCallback(
+    (boardId: string) => {
+      deleteTaskBoard({ id: boardId })
+    },
+    [deleteTaskBoard],
+  )
 
   return (
     <div className="p-4">
@@ -65,36 +75,65 @@ export const TaskBoardsPage = () => {
       ) : taskBoards?.length ? (
         <Grid>
           {taskBoards.map((board) => (
-            <Grid.Col span={viewMode === 'grid' ? 4 : 12} key={board.board_uuid}>
-              <Link to={`/task-boards/${board.board_uuid}`} className="no-underline">
-                <Card
-                  shadow="sm"
-                  padding="lg"
-                  className="cursor-pointer hover:shadow-lg transition-shadow duration-300 rounded-lg"
-                >
-                  <Text fw={500} size="lg" className="mb-2 break-words">
+            <Grid.Col
+              span={viewMode === 'grid' ? { xs: 12, sm: 6, md: 4 } : 12}
+              key={board.board_uuid}
+            >
+              <Card
+                shadow="sm"
+                padding="lg"
+                className="cursor-pointer hover:shadow-lg transition-shadow duration-300 rounded-lg"
+                onClick={() => {
+                  navigate(`/task-boards/${board.board_uuid}`)
+                }}
+              >
+                <Group p="apart" align="center" justify="space-between">
+                  <Text fw={500} size="lg" className="mb-2 truncate max-w-[60%]">
                     {board.name}
                   </Text>
-                  <Text size="sm" c="dimmed" className="mb-2 break-words">
-                    {board.description}
+                  <Tooltip label="Delete Board" withArrow>
+                    <Button
+                      variant="subtle"
+                      color="red"
+                      className="p-2 rounded-full hover:bg-red-100"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        onTaskBoardDelete(board.board_uuid)
+                      }}
+                    >
+                      <IconTrash size={20} />
+                    </Button>
+                  </Tooltip>
+                </Group>
+                <Text size="sm" c="dimmed" className="mb-2 break-words">
+                  {board.description}
+                </Text>
+                <Group p="apart" className="mb-2">
+                  <Badge color="blue" variant="light">
+                    {board.task_count > 0 ? (
+                      <>
+                        <IconX size={14} className="mr-2" />
+                        {board.task_count - board.done_task_count} Undone
+                      </>
+                    ) : (
+                      'Empty'
+                    )}
+                  </Badge>
+                  <Badge color="green" variant="light">
+                    {board.done_task_count > 0 ? (
+                      <>
+                        <IconCheck size={14} className="mr-2" />
+                        {board.done_task_count} Done
+                      </>
+                    ) : (
+                      'No Done Tasks'
+                    )}
+                  </Badge>
+                  <Text size="xs" c="dimmed">
+                    Created: {dayjs(board.created_at).format('MMM D, YYYY')}
                   </Text>
-                  <Group p="apart" className="mb-2">
-                    <Badge color="blue" variant="light">
-                      {board.task_count > 0
-                        ? `${board.task_count - board.done_task_count} Undone`
-                        : 'Empty'}
-                    </Badge>
-                    <Badge color="green" variant="light">
-                      {board.done_task_count > 0
-                        ? `${board.done_task_count} Done`
-                        : 'No Done Tasks'}
-                    </Badge>
-                    <Text size="xs" c="dimmed">
-                      Created: {dayjs(board.created_at).format('MMM D, YYYY')}
-                    </Text>
-                  </Group>
-                </Card>
-              </Link>
+                </Group>
+              </Card>
             </Grid.Col>
           ))}
         </Grid>

@@ -1,1 +1,1 @@
-export type { User, TokenPair } from './user'
+export type { User, TokenPair, UserProfile } from './user'

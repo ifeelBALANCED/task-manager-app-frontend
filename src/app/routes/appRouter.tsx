@@ -18,6 +18,7 @@ const ForgotPasswordPage = namedLazy(() => import('@/pages/forgot-password'), 'F
 const ResetPasswordPage = namedLazy(() => import('@/pages/reset-password'), 'ResetPasswordPage')
 const RegisterPage = namedLazy(() => import('@/pages/register'), 'RegisterPage')
 const DashboardPage = namedLazy(() => import('@/pages/dashboard'), 'DashboardPage')
+const SettingsPage = namedLazy(() => import('@/pages/settings'), 'SettingsPage')
 const TaskBoardsPage = namedLazy(() => import('@/pages/task-boards'), 'TaskBoardsPage')
 const TaskBoardDetailsPage = namedLazy(
   () => import('@/pages/task-board-details'),
@@ -40,6 +41,7 @@ export const LoggedInRoutes = () => (
   <Routes>
     <Route element={<Layout />}>
       <Route path="dashboard" element={<DashboardPage />} />
+      <Route path="settings" element={<SettingsPage />} />
       <Route path="task-boards" element={<TaskBoardsPage />} />
       <Route path="task-boards/:boardId" element={<TaskBoardDetailsPage />} />
       <Route path="*" element={<Navigate to="/dashboard" />} />

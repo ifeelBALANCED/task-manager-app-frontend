@@ -1,5 +1,5 @@
 import { AppShell, Avatar, Burger, Flex, Group, Menu, Text } from '@mantine/core'
-import { IconExternalLink } from '@tabler/icons-react'
+import { IconLogout, IconSettings } from '@tabler/icons-react'
 import cn from 'classnames'
 import { useUnit } from 'effector-react'
 import { useNavigate } from 'react-router-dom'
@@ -24,7 +24,7 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
   }
 
   return (
-    <AppShell.Header className="border-b border-slate-200 dark:border-slate-600">
+    <AppShell.Header className="border-b border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 shadow-sm">
       <Group h="100%" px="md" justify="space-between">
         <Flex align="center" gap="md" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
           <Burger
@@ -54,9 +54,10 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
                   variant="light"
                   radius="xl"
                   color="indigo"
+                  size="md"
                   className="border border-slate-200 dark:border-slate-600"
                 />
-                <div style={{ flex: 1 }}>
+                <div className="ml-2 hidden sm:block">
                   <Text size="sm" fw={500} className="text-slate-900 dark:text-slate-200">
                     {user?.nickname}
                   </Text>
@@ -65,7 +66,15 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
             </Menu.Target>
             <Menu.Dropdown>
               <Menu.Item
-                leftSection={<IconExternalLink />}
+                leftSection={<IconSettings size={18} />}
+                onClick={() => navigate('/settings')}
+                className={cn('flex items-center p-3 rounded-md')}
+                aria-label="Settings"
+              >
+                Settings
+              </Menu.Item>
+              <Menu.Item
+                leftSection={<IconLogout size={18} />}
                 onClick={handleLogout}
                 className={cn('flex items-center p-3 rounded-md')}
                 aria-label="Logout"

@@ -1,4 +1,10 @@
-export { taskBoardsQuery, taskBoardDetailsQuery, updateTaskBoardsQuery } from './task-board'
+export {
+  taskBoardsQuery,
+  taskBoardDetailsQuery,
+  updateTaskBoardsQuery,
+  deleteBoardDetailsQuery,
+} from './task-board'
+
 export {
   getTaskBoardsUrl,
   TaskBoard,
