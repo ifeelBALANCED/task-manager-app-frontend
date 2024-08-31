@@ -25,9 +25,13 @@ export const RegisterForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} data-testid="register-form">
       <Box pos="relative">
-        <LoadingOverlay visible={pending} loaderProps={{ children: 'Redirecting...' }} />
+        <LoadingOverlay
+          visible={pending}
+          loaderProps={{ children: 'Redirecting...' }}
+          data-testid="loading-overlay"
+        />
         <Stack>
           <TextInput
             label="Nickname"
@@ -41,6 +45,9 @@ export const RegisterForm = () => {
             value={fields.nickname.value}
             onChange={(e) => fields.nickname.onChange(e.target.value)}
             error={hasError('nickname') ? errorText('nickname') : null}
+            data-testid="nickname-input"
+            aria-invalid={hasError('nickname')}
+            aria-errormessage={errorText('nickname')}
           />
           <TextInput
             required
@@ -56,6 +63,9 @@ export const RegisterForm = () => {
             value={fields.email.value}
             onChange={(e) => fields.email.onChange(e.target.value)}
             error={hasError('email') ? errorText('email') : null}
+            data-testid="email-input"
+            aria-invalid={hasError('email')}
+            aria-errormessage={errorText('email')}
           />
           <PasswordInput
             required
@@ -71,6 +81,9 @@ export const RegisterForm = () => {
             value={fields.password.value}
             onChange={(e) => fields.password.onChange(e.target.value)}
             error={hasError('password') ? errorText('password') : null}
+            data-testid="password-input"
+            aria-invalid={hasError('password')}
+            aria-errormessage={errorText('password')}
           />
         </Stack>
 
@@ -84,6 +97,7 @@ export const RegisterForm = () => {
               to="/"
               className="text-sapphire"
               aria-label="Login"
+              data-testid="login-link"
             >
               Login
             </Anchor>
@@ -96,6 +110,7 @@ export const RegisterForm = () => {
             loading={pending}
             disabled={!isValid}
             loaderProps={{ type: 'dots' }}
+            data-testid="register-submit-button"
           >
             Register
           </Button>

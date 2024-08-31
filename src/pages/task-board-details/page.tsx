@@ -46,18 +46,27 @@ export const TaskBoardDetailsPage = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} data-testid="breadcrumbs" />
 
       {loading ? (
         <div className="flex justify-center items-center w-full h-full">
-          <Loader size={30} />
+          <Loader
+            size={30}
+            aria-label="Loading Task Board Details"
+            data-testid="loading-indicator"
+          />
         </div>
       ) : (
-        <Card shadow="sm" padding="lg" className="mt-4">
+        <Card shadow="sm" padding="lg" className="mt-4" data-testid="task-board-card">
           <Group p="apart" className="mb-4 justify-between">
             <Group>
               <Tooltip label={taskBoardDetail?.name} withArrow>
-                <Title order={2} className="break-words truncate max-w-xs cursor-pointer">
+                <Title
+                  order={2}
+                  className="break-words truncate max-w-xs cursor-pointer"
+                  aria-label="Task Board Name"
+                  data-testid="task-board-name"
+                >
                   {taskBoardDetail?.name}
                 </Title>
               </Tooltip>
@@ -68,41 +77,56 @@ export const TaskBoardDetailsPage = () => {
                   onClick={() => onBoardEdit(taskBoardDetail)}
                   radius="md"
                   size="lg"
-                  aria-label="Edit task"
+                  aria-label="Edit Task Board"
+                  data-testid="edit-task-board-button"
                 >
                   <IconEdit size={18} />
                 </ActionIcon>
               </Tooltip>
             </Group>
-            <CreateNewTaskButton />
+            <CreateNewTaskButton data-testid="create-new-task-button" />
           </Group>
-          <Text size="sm" c="dimmed" className="mb-4 break-words">
+          <Text
+            size="sm"
+            c="dimmed"
+            className="mb-4 break-words"
+            aria-label="Task Board Description"
+            data-testid="task-board-description"
+          >
             {taskBoardDetail?.description}
           </Text>
-          <Group p="apart" className="mb-4">
-            <Badge color="blue" variant="light">
+          <Group p="apart" className="mb-4" aria-label="Task Board Statistics">
+            <Badge color="blue" variant="light" data-testid="undone-tasks-badge">
               {taskBoardDetail && taskBoardDetail?.task_count > 0
                 ? `${taskBoardDetail.task_count - taskBoardDetail.done_task_count} Undone`
                 : 'Empty'}
             </Badge>
-            <Badge color="green" variant="light">
+            <Badge color="green" variant="light" data-testid="done-tasks-badge">
               {taskBoardDetail && taskBoardDetail?.done_task_count > 0
                 ? `${taskBoardDetail.done_task_count} Done`
                 : 'No Done Tasks'}
             </Badge>
-            <Text size="xs" c="dimmed">
+            <Text
+              size="xs"
+              c="dimmed"
+              aria-label="Task Board Created Date"
+              data-testid="created-date"
+            >
               Created: {dayjs(taskBoardDetail?.created_at).format('MMM D, YYYY')}
             </Text>
           </Group>
           <Divider my="sm" />
           {taskBoardDetail?.tasks.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full">
-              <Text size="lg" c="dimmed">
+            <div
+              className="flex flex-col items-center justify-center h-full"
+              aria-label="No Tasks Message"
+            >
+              <Text size="lg" c="dimmed" data-testid="no-tasks-message">
                 No tasks available
               </Text>
             </div>
           ) : (
-            <SimpleGrid cols={1}>
+            <SimpleGrid cols={1} data-testid="task-grid">
               {taskBoardDetail?.tasks.map((task) => (
                 <TaskCard
                   key={task.task_uuid}

@@ -14,7 +14,7 @@ export const ResetPasswordForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} data-testid="reset-password-form">
       <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
         <PasswordInput
           label="New Password"
@@ -28,6 +28,9 @@ export const ResetPasswordForm = () => {
           value={fields.new_password.value}
           onChange={(e) => fields.new_password.onChange(e.target.value)}
           error={hasError('new_password') ? errorText('new_password') : null}
+          data-testid="new-password-input"
+          aria-invalid={hasError('new_password')}
+          aria-errormessage={errorText('new_password')}
         />
         <PasswordInput
           label="Confirm Password"
@@ -42,6 +45,9 @@ export const ResetPasswordForm = () => {
           value={fields.confirm_new_password.value}
           onChange={(e) => fields.confirm_new_password.onChange(e.target.value)}
           error={hasError('confirm_new_password') ? errorText('confirm_new_password') : null}
+          data-testid="confirm-password-input"
+          aria-invalid={hasError('confirm_new_password')}
+          aria-errormessage={errorText('confirm_new_password')}
         />
         <Button
           type="submit"
@@ -52,6 +58,7 @@ export const ResetPasswordForm = () => {
           loading={pending}
           disabled={!isValid}
           loaderProps={{ type: 'dots' }}
+          data-testid="reset-password-submit-button"
         >
           Reset password
         </Button>

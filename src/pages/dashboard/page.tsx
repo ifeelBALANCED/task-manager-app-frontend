@@ -1,11 +1,79 @@
-import { Badge, Box } from '@mantine/core'
+import { AreaChart, PieChart } from '@mantine/charts'
+import { Badge, Card, Grid, Group, Loader, Select, Title } from '@mantine/core'
+import { useGate, useUnit } from 'effector-react'
+import {
+  $areaChartData,
+  $dashboardPending,
+  $dateOptions,
+  $pieChartData,
+  $selectedDate,
+  DashboardGate,
+  setSelectedDate,
+} from './model'
 
 export const DashboardPage = () => {
+  useGate(DashboardGate)
+
+  const { loading, selectedDate, dateOptions, areaChartData, pieChartData } = useUnit({
+    loading: $dashboardPending,
+    selectedDate: $selectedDate,
+    dateOptions: $dateOptions,
+    areaChartData: $areaChartData,
+    pieChartData: $pieChartData,
+  })
+
   return (
-    <Box>
-      <Badge color="yellow" variant="filled" size="lg" mb="md">
-        In Development
-      </Badge>
-    </Box>
+    <div className="p-6 bg-gray-100">
+      <div className="mb-6 flex justify-between items-center">
+        <Title order={2}>Default dashboard</Title>
+        <Group>
+          <Badge color="blue" variant="light">
+            {new Date().toLocaleDateString()}
+          </Badge>
+          <Select
+            placeholder="Select date"
+            data={dateOptions}
+            value={selectedDate}
+            onChange={setSelectedDate}
+          />
+        </Group>
+      </div>
+
+      {loading ? (
+        <div className="flex justify-center items-center h-full">
+          <Loader size="lg" />
+        </div>
+      ) : (
+        <Grid gutter="md">
+          <Grid.Col span={12}>
+            <Card className="p-4 shadow-sm">
+              <Title order={4} className="mb-4">
+                Task Status Over Time
+              </Title>
+              <AreaChart
+                h={300}
+                data={areaChartData}
+                dataKey="date"
+                series={[
+                  { name: 'TODO', color: 'indigo.6' },
+                  { name: 'IN_PROGRESS', color: 'blue.4' },
+                  { name: 'DONE', color: 'green.4' },
+                  { name: 'POSTPONED', color: 'red.4' },
+                ]}
+                curveType="linear"
+              />
+            </Card>
+          </Grid.Col>
+          <Grid.Col span={12}>
+            <Card className="p-4 shadow-sm">
+              <Title order={4} className="mb-4">
+                Task Status Overview
+              </Title>
+              <PieChart data={pieChartData} mx="auto" withLabels labelsType="percent" withTooltip />
+            </Card>
+          </Grid.Col>
+        </Grid>
+      )}
+    </div>
   )
 }

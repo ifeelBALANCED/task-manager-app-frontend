@@ -1,12 +1,16 @@
 import { createQuery } from '@farfetched/core'
-import { AxiosResponse } from 'axios'
 import { instance } from '@/shared/api'
-import { TaskBoard, TaskBoards } from '../types'
+import type { TaskBoard, TaskBoards, UpdateTaskBoard } from '../types'
 import { getTaskBoardDetailsUrl, getTaskBoardsUrl } from './contracts'
 
 export const taskBoardsQuery = createQuery({
-  handler: async (): Promise<TaskBoards> => {
-    const response = await instance.get<TaskBoards, AxiosResponse<TaskBoards>>(getTaskBoardsUrl())
+  handler: async ({ page, pageSize }: { page: number; pageSize: number }): Promise<TaskBoards> => {
+    const response = await instance.get<TaskBoards>(getTaskBoardsUrl(), {
+      params: {
+        page,
+        pageSize,
+      },
+    })
 
     return response.data
   },
@@ -14,9 +18,7 @@ export const taskBoardsQuery = createQuery({
 
 export const taskBoardDetailsQuery = createQuery({
   handler: async ({ boardId }: { boardId: string }): Promise<TaskBoard> => {
-    const response = await instance.get<TaskBoard, AxiosResponse<TaskBoard>>(
-      getTaskBoardDetailsUrl(boardId),
-    )
+    const response = await instance.get<TaskBoard>(getTaskBoardDetailsUrl(boardId))
 
     return response.data
   },
@@ -29,12 +31,10 @@ export const deleteBoardDetailsQuery = createQuery({
 })
 
 export const updateTaskBoardsQuery = createQuery({
-  handler: async (
-    updateTaskBoardDTO: Pick<TaskBoard, 'name' | 'description' | 'board_uuid'>,
-  ): Promise<TaskBoard> => {
-    const response = await instance.patch<TaskBoard, AxiosResponse<TaskBoard>>(
-      `${getTaskBoardsUrl()}${updateTaskBoardDTO.board_uuid}/`,
-      updateTaskBoardDTO,
+  handler: async (updateTaskBoardDto: UpdateTaskBoard): Promise<TaskBoard> => {
+    const response = await instance.patch<TaskBoard>(
+      `${getTaskBoardsUrl()}${updateTaskBoardDto.board_uuid}/`,
+      updateTaskBoardDto,
     )
 
     return response.data

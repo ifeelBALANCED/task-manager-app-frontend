@@ -23,7 +23,7 @@ export const registerForm = createForm<RegisterFormValues>({
         }),
         createRule({
           schema: yup.string().max(30, 'Email must be less than 30 characters'),
-          name: 'min-length-30',
+          name: 'max-length-30',
         }),
       ],
     },
@@ -33,6 +33,10 @@ export const registerForm = createForm<RegisterFormValues>({
         createRule({
           schema: yup.string().required('Password is required'),
           name: 'required',
+        }),
+        createRule({
+          schema: yup.string().min(8, 'Password must be at least 8 characters'),
+          name: 'min-length-8',
         }),
       ],
     },

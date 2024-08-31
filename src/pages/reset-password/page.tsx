@@ -23,26 +23,60 @@ export const ResetPasswordPage = () => {
       className="min-h-screen bg-cloud"
       role="main"
       aria-labelledby="reset-password-title"
+      data-testid="reset-password-page"
     >
-      <Container size="xs">
-        <Title id="reset-password-title" ta="center" className="font-extrabold text-sapphire">
+      <Container
+        size="xs"
+        aria-label="Reset Password Container"
+        data-testid="reset-password-container"
+      >
+        <Title
+          id="reset-password-title"
+          ta="center"
+          className="font-extrabold text-sapphire"
+          aria-label="Reset Password Title"
+          data-testid="reset-password-title"
+        >
           Reset Your Password
         </Title>
-        <Text c="dimmed" size="sm" ta="center" mt={5} className="text-steel">
+        <Text
+          c="dimmed"
+          size="sm"
+          ta="center"
+          mt={5}
+          className="text-steel"
+          aria-label="Reset Password Instruction"
+          data-testid="reset-password-instruction"
+        >
           Please enter your new password below to reset it.
         </Text>
-        <Box pos="relative">
+        <Box
+          pos="relative"
+          aria-label="Reset Password Form Box"
+          data-testid="reset-password-form-box"
+        >
           <LoadingOverlay
             visible={pending}
             loaderProps={{ children: pending ? 'Processing your request...' : '' }}
+            aria-label="Loading Overlay"
+            data-testid="loading-overlay"
           />
           <ResetPasswordForm />
-          <Text c="dimmed" size="sm" ta="center" mt="md">
+          <Text
+            c="dimmed"
+            size="sm"
+            ta="center"
+            mt="md"
+            aria-label="Back to Login Option"
+            data-testid="back-to-login-option"
+          >
             Remembered your password?
             <Link
               to="/"
               onClick={resetForm}
               className="ml-1 text-blue-500 hover:underline font-medium"
+              aria-label="Back to Login Link"
+              data-testid="back-to-login-link"
             >
               Back to Login
             </Link>

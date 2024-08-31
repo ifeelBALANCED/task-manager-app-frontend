@@ -26,3 +26,14 @@ export function isValidUUID(uuid: string): boolean {
 
   return uuidRegex.test(uuid)
 }
+
+export const STATUS_COLORS = {
+  TODO: 'gray',
+  IN_PROGRESS: 'blue',
+  DONE: 'green',
+  POSTPONED: 'orange',
+  DEFAULT: 'red',
+} as const
+
+export const getStatusColor = (status: keyof typeof STATUS_COLORS) =>
+  STATUS_COLORS[status] || STATUS_COLORS.DEFAULT

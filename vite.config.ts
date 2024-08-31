@@ -29,22 +29,21 @@ export default ({ mode }) => {
         },
       }),
       svg({
-        root: 'public/icons', // Root folder for SVG files, all source paths will be relative to this folder
-        group: true, // Group SVG files by folder
-        output: 'public/sprites', // Output folder for generated files
-        fileName: '{name}.{hash:8}.svg', // Add hash to file name
+        root: 'public/icons',
+        group: true,
+        output: 'public/sprites',
+        fileName: '{name}.{hash:8}.svg',
         metadata: {
-          path: 'src/shared/ui/icon/sprite.gen.ts', // Output file for generated TypeScript definitions
+          path: 'src/shared/ui/icon/sprite.gen.ts',
           runtime: {
-            // Generate additional runtime information
             size: true,
             viewBox: true,
           },
         },
         resetColors: {
-          exclude: [/^flags/, /^logos/], // Exclude some icons from color reset
-          replace: ['#000', '#eee', '#6C707E'], // Resets all known colors to `currentColor`
-          replaceUnknown: 'var(--icon-color)', // Replaces unknown colors with custom CSS variable
+          exclude: [/^flags/, /^logos/],
+          replace: ['#000', '#eee', '#6C707E'],
+          replaceUnknown: 'var(--icon-color)',
         },
       }),
     ],

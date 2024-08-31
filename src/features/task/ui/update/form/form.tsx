@@ -14,7 +14,7 @@ export const UpdateTaskForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} aria-live="polite">
+    <form onSubmit={handleSubmit} aria-live="polite" data-testid="update-task-form">
       <Box pos="relative">
         <LoadingOverlay visible={pending} loaderProps={{ children: 'Updating task...' }} />
         <TextInput
@@ -29,6 +29,8 @@ export const UpdateTaskForm = () => {
           onChange={(e) => fields.name.onChange(e.target.value)}
           error={hasError('name') ? errorText('name') : null}
           aria-invalid={hasError('name') ? 'true' : 'false'}
+          aria-describedby={hasError('name') ? 'name-error' : undefined}
+          data-testid="task-name-input"
         />
         <Textarea
           label="Description"
@@ -42,7 +44,9 @@ export const UpdateTaskForm = () => {
           onChange={(e) => fields.description.onChange(e.target.value)}
           error={hasError('description') ? errorText('description') : null}
           aria-invalid={hasError('description') ? 'true' : 'false'}
+          aria-describedby={hasError('description') ? 'description-error' : undefined}
           minRows={3}
+          data-testid="task-description-input"
         />
         <Select
           label="Status"
@@ -57,7 +61,9 @@ export const UpdateTaskForm = () => {
           onChange={(value) => fields.status.onChange(value as string)}
           error={hasError('status') ? errorText('status') : null}
           aria-invalid={hasError('status') ? 'true' : 'false'}
+          aria-describedby={hasError('status') ? 'status-error' : undefined}
           mt="md"
+          data-testid="task-status-select"
         />
       </Box>
       <Button
@@ -68,6 +74,7 @@ export const UpdateTaskForm = () => {
         disabled={!isValid}
         loading={pending}
         loaderProps={{ type: 'dots' }}
+        data-testid="update-task-submit-button"
       >
         Update
       </Button>

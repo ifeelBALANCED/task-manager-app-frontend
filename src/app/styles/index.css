@@ -1,5 +1,7 @@
 @import url('@mantine/core/styles.css');
 @import url('@mantine/spotlight/styles.css');
+@import url('@mantine/charts/styles.css');
+@import url('@mantine/dates/styles.css');
 
 @layer tailwind {
   @tailwind base;
@@ -16,9 +18,9 @@
 
 @layer components {
   /*
-      Our base class for icons inherits the current text color and applies common styles.
-      We're using a specific component class to prevent potential style conflicts and utilize the [data-axis] attribute.
-      */
+        Our base class for icons inherits the current text color and applies common styles.
+        We're using a specific component class to prevent potential style conflicts and utilize the [data-axis] attribute.
+        */
   .icon {
     @apply select-none fill-current inline-block text-inherit box-content;
   }

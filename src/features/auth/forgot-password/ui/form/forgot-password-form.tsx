@@ -14,7 +14,7 @@ export const ForgotPasswordForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} data-testid="forgot-password-form">
       <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
         <TextInput
           label="Email"
@@ -28,16 +28,20 @@ export const ForgotPasswordForm = () => {
           value={fields.email.value}
           onChange={(e) => fields.email.onChange(e.target.value)}
           error={hasError('email') ? errorText('email') : null}
+          data-testid="email-input"
+          aria-invalid={hasError('email')}
+          aria-errormessage={errorText('email')}
         />
         <Button
           type="submit"
           fullWidth
           mt="md"
           className="bg-sapphire text-white"
-          aria-label="Sign in"
+          aria-label="Forgot password"
           loading={pending}
           disabled={!isValid}
           loaderProps={{ type: 'dots' }}
+          data-testid="forgot-password-submit-button"
         >
           Forgot password
         </Button>

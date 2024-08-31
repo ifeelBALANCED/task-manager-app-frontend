@@ -16,10 +16,16 @@ export const UpdateTaskModal = () => {
       onClose={close}
       title="Update Task"
       centered
+      aria-labelledby="update-task-modal-title"
+      aria-modal="true"
       classNames={{
         title: 'text-task-title text-center text-sapphire font-bold',
       }}
+      data-testid="update-task-modal"
     >
+      <h1 id="update-task-modal-title" className="sr-only">
+        Update Task
+      </h1>
       <UpdateTaskForm />
     </Modal>
   )

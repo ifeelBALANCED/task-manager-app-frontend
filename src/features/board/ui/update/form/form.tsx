@@ -16,7 +16,7 @@ export const UpdateTaskBoardForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} aria-live="polite">
+    <form onSubmit={handleSubmit} aria-live="polite" data-testid="update-task-board-form">
       <Box pos="relative">
         <LoadingOverlay visible={pending} loaderProps={{ children: 'Updating task board...' }} />
         <TextInput
@@ -31,6 +31,8 @@ export const UpdateTaskBoardForm = () => {
           onChange={(e) => fields.name.onChange(e.target.value)}
           error={hasError('name') ? errorText('name') : null}
           aria-invalid={hasError('name') ? 'true' : 'false'}
+          aria-describedby={hasError('name') ? 'name-error' : undefined}
+          data-testid="task-board-name-input"
         />
         <Textarea
           label="Description"
@@ -44,7 +46,9 @@ export const UpdateTaskBoardForm = () => {
           onChange={(e) => fields.description.onChange(e.target.value)}
           error={hasError('description') ? errorText('description') : null}
           aria-invalid={hasError('description') ? 'true' : 'false'}
+          aria-describedby={hasError('description') ? 'description-error' : undefined}
           minRows={3}
+          data-testid="task-board-description-textarea"
         />
       </Box>
       <Button
@@ -55,6 +59,7 @@ export const UpdateTaskBoardForm = () => {
         disabled={!isValid}
         loading={pending}
         loaderProps={{ type: 'dots' }}
+        data-testid="update-task-board-submit-button"
       >
         Update
       </Button>

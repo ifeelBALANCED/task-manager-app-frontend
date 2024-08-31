@@ -13,12 +13,33 @@ export const LoginPage = () => {
       className="min-h-screen bg-cloud"
       role="main"
       aria-labelledby="login-title"
+      aria-label="Login Page"
+      data-testid="login-page"
     >
-      <Container my={40} className="min-w-[420px]">
-        <Title id="login-title" ta="center" className="font-extrabold text-sapphire">
+      <Container
+        my={40}
+        className="min-w-[420px]"
+        aria-label="Login Form Container"
+        data-testid="login-container"
+      >
+        <Title
+          id="login-title"
+          ta="center"
+          className="font-extrabold text-sapphire"
+          aria-label="Login Title: Welcome Back"
+          data-testid="login-title"
+        >
           Welcome back!
         </Title>
-        <Text c="dimmed" size="sm" ta="center" mt={5} className="text-steel">
+        <Text
+          c="dimmed"
+          size="sm"
+          ta="center"
+          mt={5}
+          className="text-steel"
+          aria-label="Subtitle: Create an account link"
+          data-testid="login-subtitle"
+        >
           Do not have an account yet?{' '}
           <Anchor
             size="sm"
@@ -26,13 +47,23 @@ export const LoginPage = () => {
             to="/register"
             onClick={() => reset()}
             className="text-sapphire"
-            aria-label="Create account"
+            aria-label="Link: Create account"
+            data-testid="create-account-link"
           >
             Create account
           </Anchor>
         </Text>
 
-        <Paper withBorder shadow="md" p={30} mt={20} radius="md" className="bg-white">
+        <Paper
+          withBorder
+          shadow="md"
+          p={30}
+          mt={20}
+          radius="md"
+          className="bg-white"
+          aria-label="Login Form Paper"
+          data-testid="login-paper"
+        >
           <LoginForm />
         </Paper>
       </Container>

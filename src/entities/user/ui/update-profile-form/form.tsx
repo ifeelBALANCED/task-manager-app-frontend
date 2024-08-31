@@ -14,7 +14,14 @@ export const UpdateProfileForm = () => {
   }
 
   return (
-    <Box component="form" onSubmit={handleSubmit} mt="sm" className="max-w-xl">
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      mt="sm"
+      className="max-w-xl"
+      aria-label="Update Profile Form"
+      data-testid="update-profile-form"
+    >
       <TextInput
         label="Nickname"
         placeholder="Enter your nickname"
@@ -23,6 +30,8 @@ export const UpdateProfileForm = () => {
         value={fields.nickname.value}
         onChange={(e) => fields.nickname.onChange(e.target.value)}
         error={hasError('nickname') ? errorText('nickname') : null}
+        aria-label="Nickname Input"
+        data-testid="nickname-input"
       />
       <TextInput
         label="Profile Picture URL"
@@ -32,6 +41,8 @@ export const UpdateProfileForm = () => {
         value={fields.profile_picture.value}
         onChange={(e) => fields.profile_picture.onChange(e.target.value)}
         error={hasError('profile_picture') ? errorText('profile_picture') : null}
+        aria-label="Profile Picture URL Input"
+        data-testid="profile-picture-url-input"
       />
       <PasswordInput
         label="Password"
@@ -41,6 +52,8 @@ export const UpdateProfileForm = () => {
         value={fields.password.value}
         onChange={(e) => fields.password.onChange(e.target.value)}
         error={hasError('password') ? errorText('password') : null}
+        aria-label="Password Input"
+        data-testid="password-input"
       />
       <PasswordInput
         label="Confirm Password"
@@ -50,6 +63,8 @@ export const UpdateProfileForm = () => {
         value={fields.confirm_password.value}
         onChange={(e) => fields.confirm_password.onChange(e.target.value)}
         error={hasError('confirm_password') ? errorText('confirm_password') : null}
+        aria-label="Confirm Password Input"
+        data-testid="confirm-password-input"
       />
       <Button
         type="submit"
@@ -57,6 +72,8 @@ export const UpdateProfileForm = () => {
         disabled={!isValid}
         loaderProps={{ type: 'dots' }}
         className="bg-sapphire text-white"
+        aria-label="Update Profile Button"
+        data-testid="update-profile-button"
       >
         Update profile
       </Button>
