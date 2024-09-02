@@ -18,7 +18,7 @@ export default defineConfig({
     actionTimeout: 0,
     trace: 'on-first-retry',
     testIdAttribute: 'data-testid',
-    baseURL: process.env.VITE_API_URL,
+    baseURL: BASE_URL,
     launchOptions: {
       headless: true,
     },
