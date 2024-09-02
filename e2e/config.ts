@@ -1,5 +1,7 @@
 import axios from 'axios'
-import 'dotenv/config'
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 export const BASE_URL =
   process.env.VITE_BASE_URL || `http://localhost:${process.env.VITE_CI ? 4173 : 5173}`
