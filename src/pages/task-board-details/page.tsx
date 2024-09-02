@@ -50,11 +50,7 @@ export const TaskBoardDetailsPage = () => {
 
       {loading ? (
         <div className="flex justify-center items-center w-full h-full">
-          <Loader
-            size={30}
-            aria-label="Loading Task Board Details"
-            data-testid="loading-indicator"
-          />
+          <Loader size={30} />
         </div>
       ) : (
         <Card shadow="sm" padding="lg" className="mt-4" data-testid="task-board-card">

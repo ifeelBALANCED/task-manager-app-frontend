@@ -45,8 +45,8 @@ export const DashboardPage = () => {
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center h-full">
-          <Loader size="lg" />
+        <div className="flex justify-center items-center w-full h-full">
+          <Loader size={30} />
         </div>
       ) : (
         <Grid gutter="md">
