@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test'
 
-const PORT = process.env.VITE_CI ? 4173 : 5173
+const PORT = 5173
 
 export default defineConfig({
   testDir: './e2e',
