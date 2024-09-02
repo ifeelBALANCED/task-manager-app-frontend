@@ -1,3 +1,4 @@
+// playwright.config.ts
 import { defineConfig, devices } from '@playwright/test'
 import 'dotenv/config'
 
@@ -13,7 +14,7 @@ export default defineConfig({
   use: {
     trace: 'on-first-retry',
     testIdAttribute: 'data-testid',
-    baseURL: process.env.VITE_API_URL,
+    baseURL: process.env.VITE_BASE_URL, // Use VITE_BASE_URL here
     launchOptions: {
       headless: true,
     },
