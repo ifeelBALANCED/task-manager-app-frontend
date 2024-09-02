@@ -26,7 +26,7 @@ export const DashboardPage = () => {
   return (
     <div className="p-6 bg-gray-100">
       <div className="mb-6 flex justify-between items-center">
-        <Title order={2}>Default dashboard</Title>
+        <Title order={2}>Dashboard</Title>
         <Group>
           <Badge color="blue" variant="light">
             {new Date().toLocaleDateString()}

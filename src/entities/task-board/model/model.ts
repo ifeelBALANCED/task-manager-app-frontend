@@ -65,7 +65,8 @@ sample({
   clock: [
     TaskBoardsGate.open,
     deleteBoardDetailsQuery.finished.success,
-    taskBoardsPagination.$activePage.updates,
+    taskBoardsPagination.setItemsPerPage,
+    taskBoardsPagination.activePageSet,
   ],
   source: [taskBoardsPagination.$activePage, taskBoardsPagination.$itemsPerPage] as const,
   fn: ([page, pageSize]) => ({ page, pageSize }),

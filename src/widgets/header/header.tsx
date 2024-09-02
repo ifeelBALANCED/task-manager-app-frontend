@@ -24,9 +24,18 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
   }
 
   return (
-    <AppShell.Header className="border-b border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 shadow-sm">
+    <AppShell.Header
+      className="border-b border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 shadow-sm"
+      data-testid="header"
+    >
       <Group h="100%" px="md" justify="space-between">
-        <Flex align="center" gap="md" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
+        <Flex
+          align="center"
+          gap="md"
+          onClick={handleLogoClick}
+          style={{ cursor: 'pointer' }}
+          data-testid="logo-container"
+        >
           <Burger
             opened={navbarExpanded}
             onClick={toggleNavbar}
@@ -34,21 +43,28 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
             size="sm"
             aria-label="Toggle navigation"
             className="text-slate-700 dark:text-slate-300"
+            data-testid="burger-button"
           />
           <Icon
             className="text-[1.5em] text-yellow-400 dark:text-yellow-300"
             name="sprite/logo"
             aria-label="Logo"
+            data-testid="logo-icon"
           />
-          <Text size="lg" fw={700} className="text-slate-900 dark:text-slate-200">
+          <Text
+            size="lg"
+            fw={700}
+            className="text-slate-900 dark:text-slate-200"
+            data-testid="logo-text"
+          >
             Taskboard
           </Text>
         </Flex>
         <Group>
-          <ThemeToggleControl />
+          <ThemeToggleControl data-testid="theme-toggle-control" />
           <Menu withArrow>
             <Menu.Target>
-              <Group className="hover:cursor-pointer">
+              <Group className="hover:cursor-pointer" data-testid="user-menu">
                 <Avatar
                   src={user?.profile_picture ?? ''}
                   variant="light"
@@ -56,9 +72,15 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
                   color="indigo"
                   size="md"
                   className="border border-slate-200 dark:border-slate-600"
+                  data-testid="user-avatar"
                 />
                 <div className="ml-2 hidden sm:block">
-                  <Text size="sm" fw={500} className="text-slate-900 dark:text-slate-200">
+                  <Text
+                    size="sm"
+                    fw={500}
+                    className="text-slate-900 dark:text-slate-200"
+                    data-testid="user-nickname"
+                  >
                     {user?.nickname}
                   </Text>
                 </div>
@@ -70,6 +92,7 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
                 onClick={() => navigate('/settings')}
                 className={cn('flex items-center p-3 rounded-md')}
                 aria-label="Settings"
+                data-testid="settings-menu-item"
               >
                 Settings
               </Menu.Item>
@@ -78,6 +101,7 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
                 onClick={handleLogout}
                 className={cn('flex items-center p-3 rounded-md')}
                 aria-label="Logout"
+                data-testid="logout-menu-item"
               >
                 Logout
               </Menu.Item>

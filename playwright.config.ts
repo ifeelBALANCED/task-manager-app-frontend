@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
+import 'dotenv/config'
 
 const PORT = process.env.VITE_CI ? 4173 : 5173
 
@@ -12,7 +13,7 @@ export default defineConfig({
   use: {
     trace: 'on-first-retry',
     testIdAttribute: 'data-testid',
-    baseURL: 'https://task-manager-app-backend-7wv6.onrender.com',
+    baseURL: process.env.VITE_API_URL,
     launchOptions: {
       headless: true,
     },
