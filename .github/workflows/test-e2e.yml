@@ -22,24 +22,12 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-node_modules-
-      - name: Cache Playwright Browsers
-        uses: actions/cache@v4
-        with:
-          path: .playwright-cache
-          key: ${{ runner.os }}-playwright-browsers-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-browsers-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Install Playwright Browsers
-        run: PLAYWRIGHT_BROWSERS_PATH=.playwright-cache npx playwright install --with-deps
+        run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: |
-          VITE_NODE_ENV=production \
-          VITE_API_URL=${{ secrets.VITE_API_URL }} \
-          CI=true \
-          PLAYWRIGHT_BROWSERS_PATH=.playwright-cache \
-          pnpm run test:e2e
+        run: VITE_NODE_ENV=production VITE_API_URL=${{ secrets.VITE_API_URL }} CI=true pnpm run test:e2e
       - uses: actions/upload-artifact@v4
         if: always()
         with:
