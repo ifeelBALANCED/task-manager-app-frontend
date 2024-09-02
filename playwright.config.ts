@@ -18,7 +18,7 @@ export default defineConfig({
     actionTimeout: 0,
     trace: 'on-first-retry',
     testIdAttribute: 'data-testid',
-    baseURL: BASE_URL,
+    baseURL: process.env.VITE_API_URL,
     launchOptions: {
       headless: true,
     },
@@ -32,7 +32,7 @@ export default defineConfig({
   ],
   webServer: {
     command: CI_ENABLED ? 'pnpm run build && pnpm run preview' : 'pnpm run dev',
-    url: CI_ENABLED ? process.env.VITE_DEPLOY_URL : `http://localhost:${PORT}`,
+    url: CI_ENABLED ? process.env.VITE_DEPLOY_URL : BASE_URL,
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
     stdout: 'pipe',
