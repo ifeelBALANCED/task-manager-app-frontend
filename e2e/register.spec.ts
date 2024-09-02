@@ -18,7 +18,6 @@ test.describe('Register Form', () => {
     await getElement('nickname-input').fill(registerDto.nickname)
     await getElement('email-input').fill(registerDto.email)
     await getElement('password-input').fill(registerDto.password)
-    await getElement('register-submit-button').click()
   }
 
   test('should render the register form with all required fields', async () => {
@@ -84,12 +83,11 @@ test.describe('Register Form', () => {
   test('should successfully register a new user', async ({ request }) => {
     const registerDto = createRegisterDto()
 
-    const registerPromise = request.post('/register/', { data: registerDto })
     await fillRegisterForm(registerDto)
-
+    await page.getByTestId('register-submit-button').click()
     await expect(getElement('loading-overlay')).toBeVisible()
 
-    const registerResponse = await registerPromise
+    const registerResponse = await request.post('/register/', { data: registerDto })
     expect(registerResponse.status()).toBe(201)
   })
 
@@ -102,11 +100,12 @@ test.describe('Register Form', () => {
       password: 'password',
     }
 
-    const registerQeury = await request.post('/register/', { data: registerDto })
+    const registerQuery = await request.post('/register/', { data: registerDto })
     await fillRegisterForm(registerDto)
+    await page.getByTestId('register-submit-button').click()
 
     await expect(getElement('loading-overlay')).toBeVisible()
-    expect(registerQeury.status()).toEqual(400)
+    expect(registerQuery.status()).toEqual(400)
   })
 
   test('should navigate to login page', async () => {
