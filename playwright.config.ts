@@ -32,7 +32,7 @@ export default defineConfig({
   ],
   webServer: {
     command: CI_ENABLED ? 'pnpm run build && pnpm run preview' : 'pnpm run dev',
-    url: `http://localhost:${PORT}`,
+    url: CI_ENABLED ? process.env.VITE_DEPLOY_URL : `http://localhost:${PORT}`,
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
     stdout: 'pipe',
