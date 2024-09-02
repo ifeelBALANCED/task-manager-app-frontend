@@ -1,5 +1,5 @@
-import { test } from '@playwright/test'
 import { BASE_URL } from './config'
+import { test } from './test.setup'
 
 test.describe('Reset Password Form', () => {
   test.beforeEach(async ({ page }) => {
