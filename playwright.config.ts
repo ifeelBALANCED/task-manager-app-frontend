@@ -5,6 +5,7 @@ dotenv.config()
 
 const CI_ENABLED = process.env.VITE_CI === 'true'
 const PORT = CI_ENABLED ? 4173 : 5173
+const BASE_URL = `http://localhost:${PORT}`
 
 export default defineConfig({
   testDir: './e2e',
@@ -14,9 +15,10 @@ export default defineConfig({
   workers: CI_ENABLED ? 5 : undefined,
   reporter: 'html',
   use: {
+    actionTimeout: 0,
     trace: 'on-first-retry',
     testIdAttribute: 'data-testid',
-    baseURL: process.env.VITE_API_URL,
+    baseURL: BASE_URL,
     launchOptions: {
       headless: true,
     },

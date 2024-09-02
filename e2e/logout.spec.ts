@@ -1,5 +1,6 @@
-import { expect, test } from '@playwright/test'
+import { expect } from '@playwright/test'
 import { BASE_URL } from './config'
+import { test } from './test.setup'
 
 test.describe('Logging out', () => {
   let accessToken: string | null = null

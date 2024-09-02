@@ -1,6 +1,8 @@
-import { expect, type Page, test } from '@playwright/test'
+import { expect, type Page } from '@playwright/test'
+
 import { BASE_URL } from './config'
 import { createRegisterDto, type RegisterDto } from './fixtures'
+import { test } from './test.setup'
 
 test.describe('Register Form', () => {
   let page: Page
@@ -88,7 +90,7 @@ test.describe('Register Form', () => {
     await expect(getElement('loading-overlay')).toBeVisible()
 
     const registerResponse = await registerPromise
-    expect(registerResponse.ok()).toBeTruthy()
+    expect(registerResponse.status()).toBe(201)
   })
 
   test('should display an error message when registering with an existing email', async ({
