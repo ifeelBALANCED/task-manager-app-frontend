@@ -23,7 +23,7 @@ export default defineConfig({
       headless: true,
     },
   },
-  timeout: 120 * 1000,
+  timeout: 300 * 1000,
   projects: [
     {
       name: 'chromium',

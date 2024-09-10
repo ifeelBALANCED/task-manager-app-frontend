@@ -77,10 +77,7 @@ export const TaskBoardsPage = () => {
   return (
     <div className="p-4">
       <Group align="center" justify="space-between" mb="md" className="mb-4">
-        <CreateNewTaskBoardButton
-          aria-label="Create new task board"
-          data-testid="create-new-task-board-button"
-        />
+        <CreateNewTaskBoardButton />
         {taskBoards && taskBoards?.length > 0 && (
           <Group>
             <Tooltip label="Grid View" withArrow>
@@ -128,12 +125,13 @@ export const TaskBoardsPage = () => {
         </div>
       ) : paginatedTaskBoards?.length ? (
         <>
-          <Grid>
+          <Grid data-testid="task-boards-grid">
             {paginatedTaskBoards.map((board) => (
               <Grid.Col
                 span={viewMode === 'grid' ? { xs: 12, sm: 6, md: 4 } : 12}
                 key={board.board_uuid}
                 data-testid={`task-board-card-${board.board_uuid}`}
+                data-board-id={board.board_uuid}
               >
                 <Card
                   shadow="sm"
@@ -219,6 +217,7 @@ export const TaskBoardsPage = () => {
               radius="md"
               withEdges
               aria-label="Navigate task board pages"
+              data-testid="pagination"
             />
             <Tooltip label="Select number of items to display per page" withArrow>
               <Select

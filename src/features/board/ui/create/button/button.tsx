@@ -14,6 +14,11 @@ export const CreateNewTaskBoardButton = () => {
   return (
     <>
       <Button
+        aria-label="Create new task board"
+        data-testid="create-new-task-board-button"
+        data-open={opened}
+        data-state={opened ? 'opened' : 'closed'}
+        data-action="open-modal"
         leftSection={<IconPlus size={16} />}
         color="blue"
         onClick={open}
@@ -31,6 +36,7 @@ export const CreateNewTaskBoardButton = () => {
         classNames={{
           title: 'text-task-title text-center text-sapphire font-bold',
         }}
+        id="create-new-task-board-modal"
       >
         <CreateNewTaskBoardForm />
       </Modal>

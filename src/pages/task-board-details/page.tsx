@@ -46,15 +46,21 @@ export const TaskBoardDetailsPage = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <Breadcrumbs items={breadcrumbItems} data-testid="breadcrumbs" />
+      <Breadcrumbs items={breadcrumbItems} data-testid="breadcrumbs" aria-label="Breadcrumbs" />
 
       {loading ? (
-        <div className="flex justify-center items-center w-full h-full">
-          <Loader size={30} />
+        <div className="flex justify-center items-center w-full h-full" aria-live="polite">
+          <Loader size={30} aria-label="Loading" />
         </div>
       ) : (
-        <Card shadow="sm" padding="lg" className="mt-4" data-testid="task-board-card">
-          <Group p="apart" className="mb-4 justify-between">
+        <Card
+          shadow="sm"
+          padding="lg"
+          className="mt-4"
+          data-testid="task-board-card"
+          aria-label="Task Board Card"
+        >
+          <Group p="apart" className="mb-4 justify-between" aria-label="Task Board Header">
             <Group>
               <Tooltip label={taskBoardDetail?.name} withArrow>
                 <Title
@@ -80,7 +86,7 @@ export const TaskBoardDetailsPage = () => {
                 </ActionIcon>
               </Tooltip>
             </Group>
-            <CreateNewTaskButton data-testid="create-new-task-button" />
+            <CreateNewTaskButton />
           </Group>
           <Text
             size="sm"
@@ -92,12 +98,22 @@ export const TaskBoardDetailsPage = () => {
             {taskBoardDetail?.description}
           </Text>
           <Group p="apart" className="mb-4" aria-label="Task Board Statistics">
-            <Badge color="blue" variant="light" data-testid="undone-tasks-badge">
+            <Badge
+              color="blue"
+              variant="light"
+              data-testid="undone-tasks-badge"
+              aria-label="Undone Tasks Badge"
+            >
               {taskBoardDetail && taskBoardDetail?.task_count > 0
                 ? `${taskBoardDetail.task_count - taskBoardDetail.done_task_count} Undone`
                 : 'Empty'}
             </Badge>
-            <Badge color="green" variant="light" data-testid="done-tasks-badge">
+            <Badge
+              color="green"
+              variant="light"
+              data-testid="done-tasks-badge"
+              aria-label="Done Tasks Badge"
+            >
               {taskBoardDetail && taskBoardDetail?.done_task_count > 0
                 ? `${taskBoardDetail.done_task_count} Done`
                 : 'No Done Tasks'}
@@ -111,7 +127,7 @@ export const TaskBoardDetailsPage = () => {
               Created: {dayjs(taskBoardDetail?.created_at).format('MMM D, YYYY')}
             </Text>
           </Group>
-          <Divider my="sm" />
+          <Divider my="sm" aria-label="Divider" />
           {taskBoardDetail?.tasks.length === 0 ? (
             <div
               className="flex flex-col items-center justify-center h-full"
@@ -122,7 +138,7 @@ export const TaskBoardDetailsPage = () => {
               </Text>
             </div>
           ) : (
-            <SimpleGrid cols={1} data-testid="task-grid">
+            <SimpleGrid cols={1} data-testid="task-grid" aria-label="Task Grid">
               {taskBoardDetail?.tasks.map((task) => (
                 <TaskCard
                   key={task.task_uuid}

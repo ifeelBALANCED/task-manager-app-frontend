@@ -61,7 +61,7 @@
     "react-helmet-async": "^2.0.3",
     "react-hotkeys-hook": "^4.4.1",
     "react-router-dom": "6.16.0",
-    "recharts": "2",
+    "recharts": "2.13.0-alpha.4",
     "vite-plugin-checker": "^0.7.2",
     "yup": "^1.4.0"
   },

@@ -22,6 +22,7 @@ export const UpdateTaskModal = () => {
         title: 'text-task-title text-center text-sapphire font-bold',
       }}
       data-testid="update-task-modal"
+      aria-label="Update Task Modal"
     >
       <h1 id="update-task-modal-title" className="sr-only">
         Update Task

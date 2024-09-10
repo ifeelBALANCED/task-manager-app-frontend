@@ -19,6 +19,8 @@ export const CreateNewTaskButton = () => {
         color="blue"
         onClick={open}
         leftSection={<IconPlus size={16} />}
+        aria-label="Create New Task"
+        data-testid="create-new-task-button"
       >
         Create New Task
       </Button>
@@ -31,6 +33,8 @@ export const CreateNewTaskButton = () => {
         classNames={{
           title: 'text-task-title text-center text-sapphire font-bold',
         }}
+        aria-label="Create New Task Modal"
+        data-testid="create-new-task-modal"
       >
         <CreateNewTaskForm />
       </Modal>

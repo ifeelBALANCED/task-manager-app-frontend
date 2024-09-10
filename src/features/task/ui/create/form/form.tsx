@@ -14,7 +14,7 @@ export const CreateNewTaskForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} aria-live="polite">
+    <form onSubmit={handleSubmit} aria-live="polite" data-testid="create-task-form">
       <Box pos="relative">
         <LoadingOverlay visible={pending} loaderProps={{ children: 'Creating task...' }} />
         <TextInput
@@ -29,6 +29,8 @@ export const CreateNewTaskForm = () => {
           onChange={(e) => fields.name.onChange(e.target.value)}
           error={hasError('name') ? errorText('name') : null}
           aria-invalid={hasError('name') ? 'true' : 'false'}
+          aria-label="Task Name"
+          data-testid="task-name-input"
         />
         <Textarea
           label="Description"
@@ -42,6 +44,8 @@ export const CreateNewTaskForm = () => {
           onChange={(e) => fields.description.onChange(e.target.value)}
           error={hasError('description') ? errorText('description') : null}
           aria-invalid={hasError('description') ? 'true' : 'false'}
+          aria-label="Task Description"
+          data-testid="task-description-textarea"
           minRows={3}
         />
       </Box>
@@ -53,6 +57,8 @@ export const CreateNewTaskForm = () => {
         disabled={!isValid}
         loading={pending}
         loaderProps={{ type: 'dots' }}
+        aria-label="Create Task"
+        data-testid="create-task-button"
       >
         Create
       </Button>

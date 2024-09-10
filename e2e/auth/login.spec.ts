@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test'
-import { BASE_URL } from './config'
-import { test } from './test.setup'
+import { BASE_URL } from '../config'
+import { test } from '../test.setup'
 
 test.describe('Login Form', () => {
   test.beforeEach(async ({ page }) => {

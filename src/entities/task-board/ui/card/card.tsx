@@ -1,7 +1,7 @@
 import { ActionIcon, Badge, Button, Card, Modal, Text, Tooltip } from '@mantine/core'
+import { useToggle } from '@mantine/hooks'
 import { IconEdit, IconTrash } from '@tabler/icons-react'
 import dayjs from 'dayjs'
-import { useState } from 'react'
 import { getStatusColor, getStatusIcon } from '../../lib'
 import { Task } from '../../types'
 
@@ -12,7 +12,7 @@ interface TaskCardProps {
 }
 
 export const TaskCard = ({ task, onDelete, onEdit }: TaskCardProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useToggle([false, true])
 
   const handleDelete = () => {
     setIsModalOpen(false)
@@ -28,6 +28,8 @@ export const TaskCard = ({ task, onDelete, onEdit }: TaskCardProps) => {
         withBorder
         className="mb-4 hover:shadow-md transition-all duration-200"
         data-testid={`task-card-${task.task_uuid}`}
+        data-card-id={task.task_uuid}
+        aria-label={`Task Card: ${task.name}`}
       >
         <Card.Section withBorder inheritPadding py="md">
           <div className="flex justify-between items-start">
@@ -121,7 +123,7 @@ export const TaskCard = ({ task, onDelete, onEdit }: TaskCardProps) => {
         opened={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         title={
-          <Text size="lg" fw={700}>
+          <Text size="lg" fw={700} id="confirm-deletion-title">
             Confirm Deletion
           </Text>
         }

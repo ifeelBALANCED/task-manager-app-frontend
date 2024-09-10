@@ -22,6 +22,7 @@ export const UpdateTaskBoardModal = () => {
       aria-labelledby="update-task-board-modal-title"
       aria-describedby="update-task-board-modal-description"
       data-testid="update-task-board-modal"
+      aria-label="Update Task Board Modal"
     >
       <div id="update-task-board-modal-title" className="sr-only">
         Update Task Board

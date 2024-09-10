@@ -14,7 +14,7 @@ export const CreateNewTaskBoardForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} aria-live="polite">
+    <form onSubmit={handleSubmit} aria-live="polite" data-testid="create-task-board-form">
       <Box pos="relative">
         <LoadingOverlay visible={pending} loaderProps={{ children: 'Creating board...' }} />
         <TextInput
@@ -28,7 +28,10 @@ export const CreateNewTaskBoardForm = () => {
           value={fields.name.value}
           onChange={(e) => fields.name.onChange(e.target.value)}
           error={hasError('name') ? errorText('name') : null}
-          aria-invalid={hasError('name') ? 'true' : 'false'}
+          aria-label="Board Name"
+          data-testid="board-name-input"
+          aria-invalid={hasError('name')}
+          aria-errormessage={errorText('name')}
         />
         <Textarea
           label="Description"
@@ -41,7 +44,10 @@ export const CreateNewTaskBoardForm = () => {
           value={fields.description.value}
           onChange={(e) => fields.description.onChange(e.target.value)}
           error={hasError('description') ? errorText('description') : null}
-          aria-invalid={hasError('description') ? 'true' : 'false'}
+          aria-label="Board Description"
+          data-testid="board-description-textarea"
+          aria-invalid={hasError('description')}
+          aria-errormessage={errorText('description')}
           minRows={3}
         />
       </Box>
@@ -53,6 +59,8 @@ export const CreateNewTaskBoardForm = () => {
         disabled={!isValid}
         loading={pending}
         loaderProps={{ type: 'dots' }}
+        aria-label="Create Board"
+        data-testid="create-board-form-button"
       >
         Create
       </Button>

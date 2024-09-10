@@ -1,8 +1,7 @@
 import { expect, type Page } from '@playwright/test'
-
-import { BASE_URL } from './config'
-import { createRegisterDto, type RegisterDto } from './fixtures'
-import { test } from './test.setup'
+import { BASE_URL } from '../config'
+import { createRegisterDto, type RegisterDto } from '../fixtures'
+import { test } from '../test.setup'
 
 test.describe('Register Form', () => {
   let page: Page

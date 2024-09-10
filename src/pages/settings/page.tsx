@@ -1,24 +1,23 @@
-import { Avatar, Box, Button, Divider, Flex, Loader, Text } from '@mantine/core'
+import { Avatar, Box, Button, Flex, Loader, Text } from '@mantine/core'
+import { useToggle } from '@mantine/hooks'
+import { IconEdit } from '@tabler/icons-react'
 import { useGate, useUnit } from 'effector-react'
 import { UpdateProfileForm, userApi, userModel } from '@/entities/user'
 
 export const SettingsPage = () => {
   useGate(userModel.UserSettingsGate)
-
   const { user, userLoading } = useUnit({
     user: userModel.$user,
     userLoading: userApi.getMeQuery.$pending,
   })
 
+  const [isEditing, toggleEditMode] = useToggle()
+
   return (
     <>
       {userLoading ? (
-        <div
-          className="flex justify-center items-center w-full h-64"
-          aria-label="Loading User Data"
-          data-testid="loading-user-data"
-        >
-          <Loader size={30} aria-label="Loader" data-testid="loader" />
+        <div className="flex justify-center items-center w-full h-64" aria-live="polite">
+          <Loader size={30} />
         </div>
       ) : (
         <div
@@ -81,20 +80,21 @@ export const SettingsPage = () => {
                 </Text>
               )}
               <Button
+                leftSection={!isEditing ? <IconEdit size={16} /> : undefined}
                 variant="light"
                 color="blue"
                 radius="md"
                 className="mt-4"
-                aria-label="Edit Profile Picture"
-                data-testid="edit-profile-picture-button"
+                aria-label="Edit Profile"
+                data-testid="edit-profile-button"
+                onClick={() => toggleEditMode()}
               >
-                Edit Profile Picture
+                {isEditing ? 'Close' : 'Edit Profile'}
               </Button>
             </Flex>
-            <Divider my="lg" aria-label="Divider" data-testid="divider" />
           </Box>
 
-          <UpdateProfileForm />
+          {isEditing && <UpdateProfileForm />}
         </div>
       )}
     </>
