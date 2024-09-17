@@ -32,8 +32,13 @@ test.describe('Logging out', () => {
         data: { refresh: refreshToken },
       })
 
-      await page.getByTestId('user-menu').click()
-      await page.getByTestId('logout-menu-item').click()
+      await test.step('Click user menu', async () => {
+        await page.getByTestId('user-menu').click()
+      })
+
+      await test.step('Click logout menu item', async () => {
+        await page.getByTestId('logout-menu-item').click()
+      })
 
       expect(logoutQuery.status()).toBe(200)
       await page.waitForURL(`${BASE_URL}/`)
