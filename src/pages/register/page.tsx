@@ -6,7 +6,7 @@ export const RegisterPage = () => {
     <Flex
       justify="center"
       align="center"
-      className="min-h-screen bg-cloud"
+      className="min-h-screen"
       role="main"
       aria-labelledby="register-title"
       aria-label="Register Page"
@@ -34,7 +34,6 @@ export const RegisterPage = () => {
           p={30}
           mt={20}
           radius="md"
-          className="bg-white"
           aria-label="Register Form Paper"
           data-testid="register-paper"
         >

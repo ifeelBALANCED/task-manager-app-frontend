@@ -84,14 +84,7 @@ export const TaskBoardsPage = () => {
               <Button
                 onClick={viewModeToggled}
                 disabled={viewMode === 'grid'}
-                className={cn(
-                  'p-2 rounded-full',
-                  {
-                    'bg-blue-500 text-white': viewMode === 'grid',
-                    'bg-white text-blue-500 border border-blue-500': viewMode !== 'grid',
-                  },
-                  'hover:bg-blue-600 hover:text-white',
-                )}
+                className={cn('p-2 rounded-full hover:bg-blue-600 hover:text-white')}
                 aria-label="Switch to grid view"
                 data-testid="grid-view-button"
               >
@@ -102,14 +95,7 @@ export const TaskBoardsPage = () => {
               <Button
                 onClick={viewModeToggled}
                 disabled={viewMode === 'column'}
-                className={cn(
-                  'p-2 rounded-full',
-                  {
-                    'bg-blue-500 text-white': viewMode === 'column',
-                    'bg-white text-blue-500 border border-blue-500': viewMode !== 'column',
-                  },
-                  'hover:bg-blue-600 hover:text-white',
-                )}
+                className={cn('p-2 rounded-full hover:bg-blue-600 hover:text-white')}
                 aria-label="Switch to list view"
                 data-testid="list-view-button"
               >

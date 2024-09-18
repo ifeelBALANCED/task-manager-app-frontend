@@ -125,7 +125,7 @@ const ForgotPasswordFormSection = ({ pending, resetForm }: ForgotPasswordFormSec
         <Link
           to="/"
           onClick={resetForm}
-          className="text-blue-500 hover:underline font-medium"
+          className="text-blue-500 hover:underline font-medium ml-1"
           aria-label="Back to Login Link"
           data-testid="back-to-login-link"
         >
@@ -148,7 +148,7 @@ export const ForgotPasswordPage = () => {
     <Flex
       justify="center"
       align="center"
-      className="min-h-screen bg-cloud"
+      className="min-h-screen"
       role="main"
       aria-labelledby="forgot-password-title"
       data-testid="forgot-password-page"

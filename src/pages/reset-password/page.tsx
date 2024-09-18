@@ -20,7 +20,7 @@ export const ResetPasswordPage = () => {
     <Flex
       justify="center"
       align="center"
-      className="min-h-screen bg-cloud"
+      className="min-h-screen"
       role="main"
       aria-labelledby="reset-password-title"
       data-testid="reset-password-page"

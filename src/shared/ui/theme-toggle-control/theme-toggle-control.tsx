@@ -12,7 +12,6 @@ export const ThemeToggleControl = () => {
       withArrow
     >
       <ActionIcon
-        disabled
         onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
         variant="default"
         size="lg"

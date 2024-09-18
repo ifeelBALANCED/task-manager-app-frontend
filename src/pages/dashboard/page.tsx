@@ -24,7 +24,7 @@ export const DashboardPage = () => {
   })
 
   return (
-    <div className="p-6 bg-gray-100">
+    <div className="p-6">
       <div className="mb-6 flex justify-between items-center">
         <Title order={2}>Dashboard</Title>
         <Group>

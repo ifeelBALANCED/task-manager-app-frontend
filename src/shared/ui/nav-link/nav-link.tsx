@@ -31,9 +31,8 @@ export const NavLink = ({
       className={cn(
         'flex items-center gap-3 p-3 rounded-md transition-colors duration-300 no-underline',
         {
-          'bg-sapphire text-white dark:bg-slate-600 dark:text-slate-100': isActive,
-          'text-black hover:bg-sapphire hover:text-white dark:text-slate-300 dark:hover:bg-slate-500 dark:hover:text-white':
-            !isActive,
+          'bg-sapphire text-white': isActive,
+          'text-[#C9C9C9] hover:bg-sapphire hover:text-white': !isActive,
         },
         className,
       )}

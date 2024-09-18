@@ -10,7 +10,7 @@ export const LoginPage = () => {
     <Flex
       justify="center"
       align="center"
-      className="min-h-screen bg-cloud"
+      className="min-h-screen"
       role="main"
       aria-labelledby="login-title"
       aria-label="Login Page"
@@ -60,7 +60,6 @@ export const LoginPage = () => {
           p={30}
           mt={20}
           radius="md"
-          className="bg-white"
           aria-label="Login Form Paper"
           data-testid="login-paper"
         >

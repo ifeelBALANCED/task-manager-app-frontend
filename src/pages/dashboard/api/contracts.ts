@@ -5,10 +5,3 @@ export interface Dashboard {
     [status in TaskStatus]: number
   }
 }
-
-export type StatusCounts = {
-  TODO: number
-  IN_PROGRESS: number
-  DONE: number
-  POSTPONED: number
-}

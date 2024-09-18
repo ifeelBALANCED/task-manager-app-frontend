@@ -1,8 +1,9 @@
-import { AppShell } from '@mantine/core'
+import { AppShell, Flex } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { Outlet } from 'react-router-dom'
 import { Header } from '@/widgets/header'
 import { Navbar } from '@/shared/ui/nav-bar'
+import { ThemeToggleControl } from '@/shared/ui/theme-toggle-control'
 
 type LayoutVariant = 'full' | 'minimal'
 
@@ -16,7 +17,12 @@ export const Layout = ({ variant = 'full' }: LayoutProps) => {
   if (variant === 'minimal') {
     return (
       <AppShell>
-        <Outlet />
+        <Flex w="100%" p="20px" justify="flex-end">
+          <ThemeToggleControl />
+        </Flex>
+        <AppShell.Main>
+          <Outlet />
+        </AppShell.Main>
       </AppShell>
     )
   }

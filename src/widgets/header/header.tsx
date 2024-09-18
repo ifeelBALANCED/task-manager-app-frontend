@@ -24,10 +24,7 @@ export const Header = ({ navbarExpanded, toggleNavbar }: HeaderProps) => {
   }
 
   return (
-    <AppShell.Header
-      className="border-b border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 shadow-sm"
-      data-testid="header"
-    >
+    <AppShell.Header className="border-b border-slate-200 shadow-sm" data-testid="header">
       <Group h="100%" px="md" justify="space-between">
         <Flex
           align="center"

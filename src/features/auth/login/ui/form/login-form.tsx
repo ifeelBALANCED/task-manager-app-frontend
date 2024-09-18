@@ -67,7 +67,7 @@ export const LoginForm = () => {
         <Group justify="space-between" mt="lg">
           <Checkbox
             label="Remember me"
-            className="text-smoke"
+            className="text-sapphire font-normal"
             aria-label="Remember me"
             data-testid="remember-me-checkbox"
           />
