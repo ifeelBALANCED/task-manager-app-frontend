@@ -25,7 +25,6 @@ export const UpdateProfileForm = () => {
       <TextInput
         label="Nickname"
         placeholder="Enter your nickname"
-        required
         mb="md"
         value={fields.nickname.value}
         onChange={(e) => fields.nickname.onChange(e.target.value)}
@@ -36,7 +35,6 @@ export const UpdateProfileForm = () => {
       <PasswordInput
         label="Password"
         placeholder="Enter your password"
-        required
         mb="md"
         value={fields.password.value}
         onChange={(e) => fields.password.onChange(e.target.value)}
@@ -47,7 +45,6 @@ export const UpdateProfileForm = () => {
       <PasswordInput
         label="Confirm Password"
         placeholder="Confirm your password"
-        required
         mb="md"
         value={fields.confirm_password.value}
         onChange={(e) => fields.confirm_password.onChange(e.target.value)}
