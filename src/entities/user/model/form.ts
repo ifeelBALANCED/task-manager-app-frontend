@@ -21,7 +21,7 @@ export const updateUserProfileForm = createForm<UserProfile>({
       init: '',
       rules: [
         createRule({
-          schema: yup.string().min(8, 'Password must be at least 8 characters'),
+          schema: yup.string(),
           name: 'password',
         }),
       ],
@@ -30,7 +30,7 @@ export const updateUserProfileForm = createForm<UserProfile>({
       init: '',
       rules: [
         createRule({
-          schema: yup.string().min(8, 'Confirm password must be at least 8 characters'),
+          schema: yup.string(),
           name: 'confirm_password',
         }),
       ],
