@@ -51,7 +51,6 @@ sample({
     pickBy(
       {
         nickname: form.nickname,
-        profile_picture: form.profile_picture,
         password: form.password,
       },
       identity,

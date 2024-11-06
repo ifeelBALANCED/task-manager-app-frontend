@@ -6,7 +6,6 @@ export type User = {
 }
 
 export type UserProfile = Pick<User, 'nickname'> & {
-  profile_picture: string
   password: string
   confirm_password: string
 }

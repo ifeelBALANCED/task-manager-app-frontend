@@ -17,15 +17,6 @@ export const updateUserProfileForm = createForm<UserProfile>({
         }),
       ],
     },
-    profile_picture: {
-      init: '',
-      rules: [
-        createRule({
-          schema: yup.string().optional().url('Profile picture must be a valid URL').nullable(),
-          name: 'profile_picture',
-        }),
-      ],
-    },
     password: {
       init: '',
       rules: [

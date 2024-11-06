@@ -33,17 +33,6 @@ export const UpdateProfileForm = () => {
         aria-label="Nickname Input"
         data-testid="nickname-input"
       />
-      <TextInput
-        label="Profile Picture URL"
-        placeholder="Enter your profile picture URL"
-        mb="md"
-        aria-required="true"
-        value={fields.profile_picture.value}
-        onChange={(e) => fields.profile_picture.onChange(e.target.value)}
-        error={hasError('profile_picture') ? errorText('profile_picture') : null}
-        aria-label="Profile Picture URL Input"
-        data-testid="profile-picture-url-input"
-      />
       <PasswordInput
         label="Password"
         placeholder="Enter your password"
