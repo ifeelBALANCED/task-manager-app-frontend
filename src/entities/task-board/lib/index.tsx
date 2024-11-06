@@ -1,5 +1,4 @@
 import {
-  IconAlarmSnooze,
   IconAlertCircle,
   IconCircleCheck,
   IconCircleDashed,
@@ -14,8 +13,6 @@ export const getStatusIcon = (status: string) => {
       return <IconClockPlay size={20} stroke={1.5} color="#3B82F6" />
     case 'DONE':
       return <IconCircleCheck size={20} stroke={1.5} color="#10B981" />
-    case 'POSTPONED':
-      return <IconAlarmSnooze size={20} stroke={1.5} color="#F59E0B" />
     default:
       return <IconAlertCircle size={20} stroke={1.5} color="#DC2626" />
   }
@@ -31,7 +28,6 @@ export const STATUS_COLORS = {
   TODO: 'gray',
   IN_PROGRESS: 'blue',
   DONE: 'green',
-  POSTPONED: 'orange',
   DEFAULT: 'red',
 } as const
 

@@ -7,14 +7,12 @@ type StatusCounts = {
   TODO: number
   IN_PROGRESS: number
   DONE: number
-  POSTPONED: number
 }
 
 type AreaChartData = {
   TODO: number
   IN_PROGRESS: number
   DONE: number
-  POSTPONED: number
   date: string
 }[]
 
@@ -68,7 +66,7 @@ sample({
         })
         return acc
       },
-      { TODO: 0, IN_PROGRESS: 0, DONE: 0, POSTPONED: 0 } as StatusCounts,
+      { TODO: 0, IN_PROGRESS: 0, DONE: 0 } as StatusCounts,
     )
 
     return Object.entries(combinedStatuses).map(([status, count]) => ({

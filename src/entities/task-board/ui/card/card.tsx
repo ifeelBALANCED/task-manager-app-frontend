@@ -105,18 +105,6 @@ export const TaskCard = ({ task, onDelete, onEdit }: TaskCardProps) => {
             Updated: {dayjs(task.updated_at).format('MMM D, YYYY')}
           </Text>
         </div>
-
-        {task.postponed_to && (
-          <Text
-            size="xs"
-            c="dimmed"
-            mt="2"
-            aria-label={`Task postponed to: ${dayjs(task.postponed_to).format('MMM D, YYYY')}`}
-            data-testid={`task-postponed-date-${task.task_uuid}`}
-          >
-            Postponed to: {dayjs(task.postponed_to).format('MMM D, YYYY')}
-          </Text>
-        )}
       </Card>
 
       <Modal

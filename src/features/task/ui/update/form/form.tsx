@@ -55,7 +55,6 @@ export const UpdateTaskForm = () => {
             { value: 'TODO', label: 'To Do' },
             { value: 'IN_PROGRESS', label: 'In Progress' },
             { value: 'DONE', label: 'Done' },
-            { value: 'POSTPONED', label: 'Postponed' },
           ]}
           value={fields.status.value}
           onChange={(value) => fields.status.onChange(value as string)}

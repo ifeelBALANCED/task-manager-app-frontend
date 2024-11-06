@@ -1,4 +1,4 @@
-export type TaskStatus = 'TODO' | 'IN_PROGRESS' | 'DONE' | 'POSTPONED'
+export type TaskStatus = 'TODO' | 'IN_PROGRESS' | 'DONE'
 
 export interface Dashboard {
   [date: string]: {

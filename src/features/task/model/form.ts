@@ -59,9 +59,7 @@ export const updateTaskForm = createForm<UpdateTaskFormValues>({
       init: 'TODO',
       rules: [
         createRule({
-          schema: yup
-            .string()
-            .oneOf(['TODO', 'IN_PROGRESS', 'DONE', 'POSTPONED'], 'Invalid status'),
+          schema: yup.string().oneOf(['TODO', 'IN_PROGRESS', 'DONE'], 'Invalid status'),
           name: 'status',
         }),
       ],

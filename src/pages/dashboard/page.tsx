@@ -71,7 +71,6 @@ export const DashboardPage = () => {
                     { name: 'TODO', color: 'indigo.6' },
                     { name: 'IN_PROGRESS', color: 'blue.4' },
                     { name: 'DONE', color: 'green.4' },
-                    { name: 'POSTPONED', color: 'red.4' },
                   ]}
                   curveType="linear"
                 />

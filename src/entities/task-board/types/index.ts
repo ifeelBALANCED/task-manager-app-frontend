@@ -4,7 +4,7 @@ export const TaskContract = obj({
   task_uuid: str,
   name: str,
   description: str,
-  status: or(val('TODO'), val('IN_PROGRESS'), val('DONE'), val('POSTPONED')),
+  status: or(val('TODO'), val('IN_PROGRESS'), val('DONE')),
   created_at: str,
   updated_at: str,
   postponed_to: str,
